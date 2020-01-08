@@ -1,0 +1,2402 @@
+Requirement already satisfied: appnope==0.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 1)) (0.1.0)
+Requirement already satisfied: attrs==19.3.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 2)) (19.3.0)
+Requirement already satisfied: backcall==0.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 3)) (0.1.0)
+Requirement already satisfied: bdateutil==0.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 4)) (0.1)
+Requirement already satisfied: bleach==3.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 5)) (3.1.0)
+Requirement already satisfied: bokeh==1.3.4 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 6)) (1.3.4)
+Requirement already satisfied: certifi==2019.9.11 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 7)) (2019.9.11)
+Requirement already satisfied: chardet==3.0.4 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 8)) (3.0.4)
+Requirement already satisfied: Click==7.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 9)) (7.0)
+Requirement already satisfied: cloudpickle==1.2.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 10)) (1.2.2)
+Requirement already satisfied: colorlover==0.3.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 11)) (0.3.0)
+Requirement already satisfied: cufflinks==0.16 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 12)) (0.16)
+Requirement already satisfied: cvxpy==1.0.25 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 13)) (1.0.25)
+Requirement already satisfied: cycler==0.10.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 14)) (0.10.0)
+Requirement already satisfied: decorator==4.4.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 15)) (4.4.0)
+Requirement already satisfied: defusedxml==0.6.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 16)) (0.6.0)
+Requirement already satisfied: dill==0.3.1.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 17)) (0.3.1.1)
+Requirement already satisfied: distributed==2.6.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 18)) (2.6.0)
+Requirement already satisfied: ecos==2.0.7.post1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 19)) (2.0.7.post1)
+Requirement already satisfied: entrypoints==0.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 20)) (0.3)
+Requirement already satisfied: fsspec==0.5.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 21)) (0.5.2)
+Requirement already satisfied: future==0.18.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 22)) (0.18.0)
+Requirement already satisfied: HeapDict==1.0.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 23)) (1.0.1)
+Requirement already satisfied: holidays==0.9.11 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 24)) (0.9.11)
+Requirement already satisfied: idna==2.8 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 25)) (2.8)
+Requirement already satisfied: importlib-metadata==0.23 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 26)) (0.23)
+Requirement already satisfied: jedi==0.15.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 27)) (0.15.1)
+Requirement already satisfied: Jinja2==2.10.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 28)) (2.10.3)
+Requirement already satisfied: joblib==0.14.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 29)) (0.14.0)
+Requirement already satisfied: kiwisolver==1.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 30)) (1.1.0)
+Requirement already satisfied: locket==0.2.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 31)) (0.2.0)
+Requirement already satisfied: MarkupSafe==1.1.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 32)) (1.1.1)
+Requirement already satisfied: mistune==0.8.4 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 33)) (0.8.4)
+Requirement already satisfied: more-itertools==7.2.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 34)) (7.2.0)
+Requirement already satisfied: msgpack==0.6.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 35)) (0.6.2)
+Requirement already satisfied: multiprocess==0.70.9 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 36)) (0.70.9)
+Requirement already satisfied: nbconvert==5.6.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 37)) (5.6.0)
+Requirement already satisfied: nbformat==4.4.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 38)) (4.4.0)
+Requirement already satisfied: notebook==6.0.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 39)) (6.0.1)
+Requirement already satisfied: numpy==1.17.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 40)) (1.17.2)
+Requirement already satisfied: osqp==0.6.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 41)) (0.6.1)
+Requirement already satisfied: packaging==19.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 42)) (19.2)
+Requirement already satisfied: pandas==0.25.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 43)) (0.25.1)
+Requirement already satisfied: pandocfilters==1.4.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 44)) (1.4.2)
+Requirement already satisfied: parso==0.5.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 45)) (0.5.1)
+Requirement already satisfied: partd==1.0.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 46)) (1.0.0)
+Requirement already satisfied: patsy==0.5.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 47)) (0.5.1)
+Requirement already satisfied: pexpect==4.7.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 48)) (4.7.0)
+Requirement already satisfied: pickleshare==0.7.5 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 49)) (0.7.5)
+Requirement already satisfied: Pillow==6.2.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 50)) (6.2.1)
+Requirement already satisfied: prometheus-client==0.7.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 51)) (0.7.1)
+Requirement already satisfied: prompt-toolkit==2.0.10 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 52)) (2.0.10)
+Requirement already satisfied: psutil==5.6.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 53)) (5.6.3)
+Requirement already satisfied: ptyprocess==0.6.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 54)) (0.6.0)
+Requirement already satisfied: pycausalimpact==0.0.15 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 55)) (0.0.15)
+Requirement already satisfied: pydlm==0.1.1.11 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 56)) (0.1.1.11)
+Requirement already satisfied: Pygments==2.4.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 57)) (2.4.2)
+Requirement already satisfied: pyparsing==2.4.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 58)) (2.4.2)
+Requirement already satisfied: pyrsistent==0.15.4 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 59)) (0.15.4)
+Requirement already satisfied: pyswarm==0.6 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 60)) (0.6)
+Requirement already satisfied: pyswarms==1.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 61)) (1.1.0)
+Requirement already satisfied: python-dateutil==2.8.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 62)) (2.8.0)
+Requirement already satisfied: pytz==2019.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 63)) (2019.3)
+Requirement already satisfied: PyYAML==5.1.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 64)) (5.1.2)
+Requirement already satisfied: pyzmq==18.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 65)) (18.1.0)
+Requirement already satisfied: requests==2.22.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 66)) (2.22.0)
+Requirement already satisfied: retrying==1.3.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 67)) (1.3.3)
+Requirement already satisfied: scikit-learn==0.21.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 68)) (0.21.3)
+Requirement already satisfied: scipy==1.3.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 69)) (1.3.1)
+Requirement already satisfied: scs==2.1.1.post2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 70)) (2.1.1.post2)
+Requirement already satisfied: Send2Trash==1.5.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 71)) (1.5.0)
+Requirement already satisfied: six==1.12.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 72)) (1.12.0)
+Requirement already satisfied: sortedcontainers==2.1.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 73)) (2.1.0)
+Requirement already satisfied: statsmodels==0.10.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 74)) (0.10.1)
+Requirement already satisfied: tblib==1.4.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 75)) (1.4.0)
+Requirement already satisfied: terminado==0.8.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 76)) (0.8.2)
+Requirement already satisfied: testpath==0.4.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 77)) (0.4.2)
+Requirement already satisfied: toolz==0.10.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 78)) (0.10.0)
+Requirement already satisfied: tornado==6.0.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 79)) (6.0.3)
+Requirement already satisfied: tqdm==4.36.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 80)) (4.36.1)
+Requirement already satisfied: traitlets==4.3.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 81)) (4.3.3)
+Requirement already satisfied: urllib3==1.25.6 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 82)) (1.25.6)
+Requirement already satisfied: wcwidth==0.1.7 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 83)) (0.1.7)
+Requirement already satisfied: webencodings==0.5.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 84)) (0.5.1)
+Requirement already satisfied: widgetsnbextension==3.5.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 85)) (3.5.1)
+Requirement already satisfied: zict==1.0.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 86)) (1.0.0)
+Requirement already satisfied: zipp==0.6.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from -r requirements2.txt (line 87)) (0.6.0)
+Requirement already satisfied: plotly<4.0.0a0,>=3.0.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from cufflinks==0.16->-r requirements2.txt (line 12)) (3.10.0)
+Requirement already satisfied: setuptools>=34.4.1 in /share/software/user/open/python/3.6.1/lib/python3.6/site-packages (from cufflinks==0.16->-r requirements2.txt (line 12)) (39.2.0)
+Requirement already satisfied: ipywidgets>=7.0.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from cufflinks==0.16->-r requirements2.txt (line 12)) (7.5.1)
+Requirement already satisfied: ipython>=5.3.0 in /home/users/jmroth/.local/lib/python3.6/site-packages (from cufflinks==0.16->-r requirements2.txt (line 12)) (7.9.0)
+Requirement already satisfied: dask>=2.5.2 in /home/users/jmroth/.local/lib/python3.6/site-packages (from distributed==2.6.0->-r requirements2.txt (line 18)) (2.7.0)
+Requirement already satisfied: jupyter-core in /home/users/jmroth/.local/lib/python3.6/site-packages (from nbconvert==5.6.0->-r requirements2.txt (line 37)) (4.6.1)
+Requirement already satisfied: jsonschema!=2.5.0,>=2.4 in /home/users/jmroth/.local/lib/python3.6/site-packages (from nbformat==4.4.0->-r requirements2.txt (line 38)) (3.1.1)
+Requirement already satisfied: ipython-genutils in /home/users/jmroth/.local/lib/python3.6/site-packages (from nbformat==4.4.0->-r requirements2.txt (line 38)) (0.2.0)
+Requirement already satisfied: ipykernel in /home/users/jmroth/.local/lib/python3.6/site-packages (from notebook==6.0.1->-r requirements2.txt (line 39)) (5.1.3)
+Requirement already satisfied: jupyter-client>=5.3.1 in /home/users/jmroth/.local/lib/python3.6/site-packages (from notebook==6.0.1->-r requirements2.txt (line 39)) (5.3.4)
+Requirement already satisfied: matplotlib>=2.2.3 in /home/users/jmroth/.local/lib/python3.6/site-packages (from pycausalimpact==0.0.15->-r requirements2.txt (line 55)) (3.1.1)
+WARNING: You are using pip version 19.2.3, however version 19.3.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Shape of X:  (19, 19, 8784)
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+124 Setting up optimization parameters...
+124 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+124 Starting Hour:  0
+124 Finished! Total time to set up parameters:  79.8567991059972
+124 Creating constraints and objective function...
+124 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+124 Finished! Total time to solve optimization:  163.14104272699478
+124 Relative error: 5.99 % 
+Clearing Memory...
+Finished simulation with total time:  262.50125062799634
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+125 Setting up optimization parameters...
+125 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+125 Starting Hour:  0
+125 Finished! Total time to set up parameters:  76.65047813099955
+125 Creating constraints and objective function...
+125 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+125 Finished! Total time to solve optimization:  174.7320047769972
+125 Relative error: 5.88 % 
+Clearing Memory...
+Finished simulation with total time:  273.0655394889982
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+126 Setting up optimization parameters...
+126 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+126 Starting Hour:  0
+126 Finished! Total time to set up parameters:  77.90074576599727
+126 Creating constraints and objective function...
+126 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+126 Finished! Total time to solve optimization:  178.37543516299775
+126 Relative error: 6.17 % 
+Clearing Memory...
+Finished simulation with total time:  279.0256601709989
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+142 Setting up optimization parameters...
+142 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+142 Starting Hour:  0
+142 Finished! Total time to set up parameters:  81.859547965003
+142 Creating constraints and objective function...
+142 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+142 Finished! Total time to solve optimization:  180.8308060759955
+142 Relative error: 5.23 % 
+Clearing Memory...
+Finished simulation with total time:  287.880807223999
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+143 Setting up optimization parameters...
+143 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+143 Starting Hour:  0
+143 Finished! Total time to set up parameters:  80.85768081399874
+143 Creating constraints and objective function...
+143 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+143 Finished! Total time to solve optimization:  192.95561324799928
+143 Relative error: 7.20 % 
+Clearing Memory...
+Finished simulation with total time:  296.6741301900038
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+144 Setting up optimization parameters...
+144 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+144 Starting Hour:  0
+144 Finished! Total time to set up parameters:  78.19759730399528
+144 Creating constraints and objective function...
+144 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+144 Finished! Total time to solve optimization:  180.76730715099984
+144 Relative error: 6.03 % 
+Clearing Memory...
+Finished simulation with total time:  279.78156168400164
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+157 Setting up optimization parameters...
+157 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+157 Starting Hour:  0
+157 Finished! Total time to set up parameters:  80.19784908500151
+157 Creating constraints and objective function...
+157 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+157 Finished! Total time to solve optimization:  176.06968952400348
+157 Relative error: 5.93 % 
+Clearing Memory...
+Finished simulation with total time:  276.75211665900133
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+158 Setting up optimization parameters...
+158 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+158 Starting Hour:  0
+158 Finished! Total time to set up parameters:  75.19278255799873
+158 Creating constraints and objective function...
+158 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+158 Finished! Total time to solve optimization:  172.72388405600213
+158 Relative error: 7.13 % 
+Clearing Memory...
+Finished simulation with total time:  268.5101111059994
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+159 Setting up optimization parameters...
+159 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+159 Starting Hour:  0
+159 Finished! Total time to set up parameters:  75.16999258999567
+159 Creating constraints and objective function...
+159 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+159 Finished! Total time to solve optimization:  171.93500059100188
+159 Relative error: 5.28 % 
+Clearing Memory...
+Finished simulation with total time:  268.2887233759975
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+127 Setting up optimization parameters...
+127 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+127 Starting Hour:  0
+127 Finished! Total time to set up parameters:  79.59455584399984
+127 Creating constraints and objective function...
+127 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+127 Finished! Total time to solve optimization:  163.06985809899925
+127 Relative error: 8.00 % 
+Clearing Memory...
+Finished simulation with total time:  261.5542933280012
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+128 Setting up optimization parameters...
+128 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+128 Starting Hour:  0
+128 Finished! Total time to set up parameters:  76.38354926100146
+128 Creating constraints and objective function...
+128 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+128 Finished! Total time to solve optimization:  174.57678617999773
+128 Relative error: 7.03 % 
+Clearing Memory...
+Finished simulation with total time:  272.8109729200005
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+129 Setting up optimization parameters...
+129 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+129 Starting Hour:  0
+129 Finished! Total time to set up parameters:  78.33045289599977
+129 Creating constraints and objective function...
+129 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+129 Finished! Total time to solve optimization:  178.2121812569967
+129 Relative error: 4.94 % 
+Clearing Memory...
+Finished simulation with total time:  278.8775734619994
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+139 Setting up optimization parameters...
+139 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+139 Starting Hour:  0
+139 Finished! Total time to set up parameters:  77.51661495400185
+139 Creating constraints and objective function...
+139 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+139 Finished! Total time to solve optimization:  176.81170643500081
+139 Relative error: 6.28 % 
+Clearing Memory...
+Finished simulation with total time:  276.5537126220006
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+140 Setting up optimization parameters...
+140 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+140 Starting Hour:  0
+140 Finished! Total time to set up parameters:  77.56061860900081
+140 Creating constraints and objective function...
+140 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+140 Finished! Total time to solve optimization:  181.16409369699977
+140 Relative error: 7.59 % 
+Clearing Memory...
+Finished simulation with total time:  281.2507211439952
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+141 Setting up optimization parameters...
+141 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+141 Starting Hour:  0
+141 Finished! Total time to set up parameters:  79.00745965500391
+141 Creating constraints and objective function...
+141 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+141 Finished! Total time to solve optimization:  182.45675054500316
+141 Relative error: 8.66 % 
+Clearing Memory...
+Finished simulation with total time:  284.82467868000094
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+154 Setting up optimization parameters...
+154 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+154 Starting Hour:  0
+154 Finished! Total time to set up parameters:  78.98454433000006
+154 Creating constraints and objective function...
+154 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+154 Finished! Total time to solve optimization:  185.61728667600255
+154 Relative error: 6.22 % 
+Clearing Memory...
+Finished simulation with total time:  286.88323482000123
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+155 Setting up optimization parameters...
+155 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+155 Starting Hour:  0
+155 Finished! Total time to set up parameters:  78.20235822199902
+155 Creating constraints and objective function...
+155 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+155 Finished! Total time to solve optimization:  178.58485977699456
+155 Relative error: 5.42 % 
+Clearing Memory...
+Finished simulation with total time:  278.5505817049998
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+156 Setting up optimization parameters...
+156 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+156 Starting Hour:  0
+156 Finished! Total time to set up parameters:  78.0557317740022
+156 Creating constraints and objective function...
+156 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+156 Finished! Total time to solve optimization:  178.77675376200204
+156 Relative error: 5.52 % 
+Clearing Memory...
+Finished simulation with total time:  279.1877880910033
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+121 Setting up optimization parameters...
+121 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+121 Starting Hour:  0
+121 Finished! Total time to set up parameters:  79.75552279299882
+121 Creating constraints and objective function...
+121 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+121 Finished! Total time to solve optimization:  163.18135551999876
+121 Relative error: 5.78 % 
+Clearing Memory...
+Finished simulation with total time:  261.99990522499866
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+122 Setting up optimization parameters...
+122 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+122 Starting Hour:  0
+122 Finished! Total time to set up parameters:  76.69929834299546
+122 Creating constraints and objective function...
+122 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+122 Finished! Total time to solve optimization:  175.2920704720018
+122 Relative error: 5.31 % 
+Clearing Memory...
+Finished simulation with total time:  273.9848267100024
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+123 Setting up optimization parameters...
+123 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+123 Starting Hour:  0
+123 Finished! Total time to set up parameters:  77.74566176299413
+123 Creating constraints and objective function...
+123 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+123 Finished! Total time to solve optimization:  178.2700743509995
+123 Relative error: 8.34 % 
+Clearing Memory...
+Finished simulation with total time:  278.55983235299936
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+136 Setting up optimization parameters...
+136 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+136 Starting Hour:  0
+136 Finished! Total time to set up parameters:  79.49697898200247
+136 Creating constraints and objective function...
+136 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+136 Finished! Total time to solve optimization:  177.11395675400126
+136 Relative error: 5.77 % 
+Clearing Memory...
+Finished simulation with total time:  278.79617178500484
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+137 Setting up optimization parameters...
+137 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+137 Starting Hour:  0
+137 Finished! Total time to set up parameters:  77.6828235560024
+137 Creating constraints and objective function...
+137 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+137 Finished! Total time to solve optimization:  176.80999917699955
+137 Relative error: 5.40 % 
+Clearing Memory...
+Finished simulation with total time:  276.6941581389983
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+138 Setting up optimization parameters...
+138 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+138 Starting Hour:  0
+138 Finished! Total time to set up parameters:  76.8390603959997
+138 Creating constraints and objective function...
+138 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+138 Finished! Total time to solve optimization:  176.4068473369989
+138 Relative error: 7.29 % 
+Clearing Memory...
+Finished simulation with total time:  275.1398967770001
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+145 Setting up optimization parameters...
+145 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+145 Starting Hour:  0
+145 Finished! Total time to set up parameters:  86.25617170699843
+145 Creating constraints and objective function...
+145 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+145 Finished! Total time to solve optimization:  192.38441879099992
+145 Relative error: 6.83 % 
+Clearing Memory...
+Finished simulation with total time:  301.0797442969997
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+146 Setting up optimization parameters...
+146 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+146 Starting Hour:  0
+146 Finished! Total time to set up parameters:  78.42382498599909
+146 Creating constraints and objective function...
+146 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+146 Finished! Total time to solve optimization:  190.0558441470057
+146 Relative error: 5.82 % 
+Clearing Memory...
+Finished simulation with total time:  293.88670378000097
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+147 Setting up optimization parameters...
+147 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+147 Starting Hour:  0
+147 Finished! Total time to set up parameters:  81.29524201300228
+147 Creating constraints and objective function...
+147 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+147 Finished! Total time to solve optimization:  183.52519627999573
+147 Relative error: 6.89 % 
+Clearing Memory...
+Finished simulation with total time:  287.34475689900137
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+118 Setting up optimization parameters...
+118 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+118 Starting Hour:  0
+118 Finished! Total time to set up parameters:  80.03089634099888
+118 Creating constraints and objective function...
+118 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+118 Finished! Total time to solve optimization:  163.31251980699744
+118 Relative error: 5.91 % 
+Clearing Memory...
+Finished simulation with total time:  262.4517231850041
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+119 Setting up optimization parameters...
+119 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+119 Starting Hour:  0
+119 Finished! Total time to set up parameters:  77.07411874300305
+119 Creating constraints and objective function...
+119 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+119 Finished! Total time to solve optimization:  174.8964972449976
+119 Relative error: 7.00 % 
+Clearing Memory...
+Finished simulation with total time:  273.80920211099874
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+120 Setting up optimization parameters...
+120 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+120 Starting Hour:  0
+120 Finished! Total time to set up parameters:  77.84517234500527
+120 Creating constraints and objective function...
+120 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+120 Finished! Total time to solve optimization:  178.48525712200353
+120 Relative error: 6.58 % 
+Clearing Memory...
+Finished simulation with total time:  278.74392836100014
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+133 Setting up optimization parameters...
+133 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+133 Starting Hour:  0
+133 Finished! Total time to set up parameters:  79.43965623999975
+133 Creating constraints and objective function...
+133 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+133 Finished! Total time to solve optimization:  177.85089168899867
+133 Relative error: 6.59 % 
+Clearing Memory...
+Finished simulation with total time:  279.7471534389988
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+134 Setting up optimization parameters...
+134 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+134 Starting Hour:  0
+134 Finished! Total time to set up parameters:  78.09160588699888
+134 Creating constraints and objective function...
+134 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+134 Finished! Total time to solve optimization:  176.8906704319961
+134 Relative error: 6.70 % 
+Clearing Memory...
+Finished simulation with total time:  277.6624679050001
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+135 Setting up optimization parameters...
+135 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+135 Starting Hour:  0
+135 Finished! Total time to set up parameters:  78.74706211999728
+135 Creating constraints and objective function...
+135 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+135 Finished! Total time to solve optimization:  176.55328275899956
+135 Relative error: 5.81 % 
+Clearing Memory...
+Finished simulation with total time:  277.8781715770019
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+148 Setting up optimization parameters...
+148 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+148 Starting Hour:  0
+148 Finished! Total time to set up parameters:  80.70000033600081
+148 Creating constraints and objective function...
+148 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+148 Finished! Total time to solve optimization:  178.38286536300438
+148 Relative error: 4.98 % 
+Clearing Memory...
+Finished simulation with total time:  280.7989409639995
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+149 Setting up optimization parameters...
+149 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+149 Starting Hour:  0
+149 Finished! Total time to set up parameters:  77.9625955280062
+149 Creating constraints and objective function...
+149 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+149 Finished! Total time to solve optimization:  182.91147625500162
+149 Relative error: 6.46 % 
+Clearing Memory...
+Finished simulation with total time:  283.34113239
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+150 Setting up optimization parameters...
+150 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+150 Starting Hour:  0
+150 Finished! Total time to set up parameters:  78.26509281700419
+150 Creating constraints and objective function...
+150 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+150 Finished! Total time to solve optimization:  178.92753660200106
+150 Relative error: 5.90 % 
+Clearing Memory...
+Finished simulation with total time:  280.62393481600157
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+163 Setting up optimization parameters...
+163 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+163 Starting Hour:  0
+163 Finished! Total time to set up parameters:  78.71388984600344
+163 Creating constraints and objective function...
+163 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+163 Finished! Total time to solve optimization:  187.99079715999687
+163 Relative error: 5.69 % 
+Clearing Memory...
+Finished simulation with total time:  293.3838251229972
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+164 Setting up optimization parameters...
+164 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+164 Starting Hour:  0
+164 Finished! Total time to set up parameters:  87.57412355599809
+164 Creating constraints and objective function...
+164 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+164 Finished! Total time to solve optimization:  196.4688973789962
+164 Relative error: 5.74 % 
+Clearing Memory...
+Finished simulation with total time:  312.98966065499553
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+115 Setting up optimization parameters...
+115 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+115 Starting Hour:  0
+115 Finished! Total time to set up parameters:  79.80945889500435
+115 Creating constraints and objective function...
+115 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+115 Finished! Total time to solve optimization:  162.71906475000287
+115 Relative error: 5.74 % 
+Clearing Memory...
+Finished simulation with total time:  261.4742194970022
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+116 Setting up optimization parameters...
+116 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+116 Starting Hour:  0
+116 Finished! Total time to set up parameters:  76.57224972800032
+116 Creating constraints and objective function...
+116 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+116 Finished! Total time to solve optimization:  173.91882014099974
+116 Relative error: 5.80 % 
+Clearing Memory...
+Finished simulation with total time:  272.2625525580006
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+117 Setting up optimization parameters...
+117 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+117 Starting Hour:  0
+117 Finished! Total time to set up parameters:  77.47353015000408
+117 Creating constraints and objective function...
+117 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+117 Finished! Total time to solve optimization:  177.18826603599882
+117 Relative error: 6.78 % 
+Clearing Memory...
+Finished simulation with total time:  277.10273503999633
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+130 Setting up optimization parameters...
+130 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+130 Starting Hour:  0
+130 Finished! Total time to set up parameters:  77.58468488499784
+130 Creating constraints and objective function...
+130 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+130 Finished! Total time to solve optimization:  179.1113805729983
+130 Relative error: 5.51 % 
+Clearing Memory...
+Finished simulation with total time:  279.503944256001
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+131 Setting up optimization parameters...
+131 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+131 Starting Hour:  0
+131 Finished! Total time to set up parameters:  80.77080247000413
+131 Creating constraints and objective function...
+131 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+131 Finished! Total time to solve optimization:  178.91567194799427
+131 Relative error: 5.76 % 
+Clearing Memory...
+Finished simulation with total time:  282.62621179400594
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+132 Setting up optimization parameters...
+132 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+132 Starting Hour:  0
+132 Finished! Total time to set up parameters:  77.8238667609985
+132 Creating constraints and objective function...
+132 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+132 Finished! Total time to solve optimization:  178.2888534369995
+132 Relative error: 5.87 % 
+Clearing Memory...
+Finished simulation with total time:  279.39964188999875
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+151 Setting up optimization parameters...
+151 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+151 Starting Hour:  0
+151 Finished! Total time to set up parameters:  77.69992476000334
+151 Creating constraints and objective function...
+151 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+151 Finished! Total time to solve optimization:  177.70346111099934
+151 Relative error: 6.51 % 
+Clearing Memory...
+Finished simulation with total time:  276.8068779940004
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+152 Setting up optimization parameters...
+152 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+152 Starting Hour:  0
+152 Finished! Total time to set up parameters:  78.04589158199815
+152 Creating constraints and objective function...
+152 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+152 Finished! Total time to solve optimization:  179.9359955819964
+152 Relative error: 5.46 % 
+Clearing Memory...
+Finished simulation with total time:  280.6407790279991
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+153 Setting up optimization parameters...
+153 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+153 Starting Hour:  0
+153 Finished! Total time to set up parameters:  78.63788397100143
+153 Creating constraints and objective function...
+153 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+153 Finished! Total time to solve optimization:  179.50375799600442
+153 Relative error: 6.13 % 
+Clearing Memory...
+Finished simulation with total time:  281.4863820390019
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+160 Setting up optimization parameters...
+160 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+160 Starting Hour:  0
+160 Finished! Total time to set up parameters:  79.5670304469968
+160 Creating constraints and objective function...
+160 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+160 Finished! Total time to solve optimization:  192.2777557340014
+160 Relative error: 6.50 % 
+Clearing Memory...
+Finished simulation with total time:  297.2140381930003
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+161 Setting up optimization parameters...
+161 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+161 Starting Hour:  0
+161 Finished! Total time to set up parameters:  80.80988274799893
+161 Creating constraints and objective function...
+161 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+161 Finished! Total time to solve optimization:  184.9780223879934
+161 Relative error: 7.72 % 
+Clearing Memory...
+Finished simulation with total time:  291.08676294799807
+Shape of AMX:  (1000, 19, 1000)
+Finished creating buildings...
+162 Setting up optimization parameters...
+162 Shape of Ec, Eaj, Ea (1000,) (1000, 1000) (1000,)
+162 Starting Hour:  0
+162 Finished! Total time to set up parameters:  82.56880139300483
+162 Creating constraints and objective function...
+162 Solving Optimization Function...
+WARN: A->p (column pointers) not strictly increasing, column 1084 empty
+WARN: A->p (column pointers) not strictly increasing, column 1094 empty
+WARN: A->p (column pointers) not strictly increasing, column 1095 empty
+WARN: A->p (column pointers) not strictly increasing, column 1096 empty
+WARN: A->p (column pointers) not strictly increasing, column 1100 empty
+WARN: A->p (column pointers) not strictly increasing, column 1101 empty
+WARN: A->p (column pointers) not strictly increasing, column 1102 empty
+WARN: A->p (column pointers) not strictly increasing, column 1103 empty
+WARN: A->p (column pointers) not strictly increasing, column 1104 empty
+WARN: A->p (column pointers) not strictly increasing, column 1105 empty
+WARN: A->p (column pointers) not strictly increasing, column 1106 empty
+WARN: A->p (column pointers) not strictly increasing, column 1107 empty
+WARN: A->p (column pointers) not strictly increasing, column 1108 empty
+WARN: A->p (column pointers) not strictly increasing, column 1109 empty
+WARN: A->p (column pointers) not strictly increasing, column 1110 empty
+WARN: A->p (column pointers) not strictly increasing, column 1111 empty
+WARN: A->p (column pointers) not strictly increasing, column 1112 empty
+WARN: A->p (column pointers) not strictly increasing, column 1113 empty
+WARN: A->p (column pointers) not strictly increasing, column 1114 empty
+WARN: A->p (column pointers) not strictly increasing, column 1115 empty
+WARN: A->p (column pointers) not strictly increasing, column 1116 empty
+WARN: A->p (column pointers) not strictly increasing, column 1117 empty
+WARN: A->p (column pointers) not strictly increasing, column 1118 empty
+WARN: A->p (column pointers) not strictly increasing, column 1119 empty
+WARN: A->p (column pointers) not strictly increasing, column 1120 empty
+WARN: A->p (column pointers) not strictly increasing, column 1121 empty
+WARN: A->p (column pointers) not strictly increasing, column 1122 empty
+WARN: A->p (column pointers) not strictly increasing, column 1123 empty
+WARN: A->p (column pointers) not strictly increasing, column 1124 empty
+WARN: A->p (column pointers) not strictly increasing, column 1134 empty
+WARN: A->p (column pointers) not strictly increasing, column 1144 empty
+WARN: A->p (column pointers) not strictly increasing, column 1145 empty
+WARN: A->p (column pointers) not strictly increasing, column 1146 empty
+WARN: aa_init returned NULL, no acceleration applied.
+162 Finished! Total time to solve optimization:  193.88437866899767
+162 Relative error: 6.46 % 
+Clearing Memory...
+Finished simulation with total time:  299.18262379799853
+ALL SIMULATIONS TIME:  3445.0209702710054
