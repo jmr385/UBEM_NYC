@@ -438,8 +438,7 @@ def create_all_buildings(ubem, total_simulations, sim_num=0):
 
 def get_simulation_errors():
     logs = [1, 2, 65, 115, 215, 265, 315, 365, 415, 465]
-    log_file = '/Users/jonathanroth/PycharmProjects/UBEM/UBEM_batch65.log'
-    log_files = ['/Users/jonathanroth/PycharmProjects/UBEM/UBEM_batch' + str(x) + '.log' for x in logs]
+    log_files = [os.getcwd() + '/Simulation_output/UBEM_batch' + str(x) + '.log' for x in logs]
     all_errors = []
     for f in log_files:
         with open(f, 'r') as file:
@@ -479,68 +478,66 @@ def run_pso_parallel(run_pso, sim_num=10):
     start = timeit.default_timer()
 
     pool = mp.Pool(5)
-    sim_results = pool.map(run_pso, [i for i in np.arange(sim_num)])
+    sim_results = pool.map(run_pso.run, [i for i in np.arange(sim_num)])
     pool.close()
     pool.join()
 
     stop = timeit.default_timer()
-    print('ALL SIMULATIONS TIME: ', stop - start)  # ~100sec
+    print('ALL SIMULATIONS TIME: ', stop - start)  #
     return sim_results
 
 
 if __name__ == '__main__':
-    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=1000)  # 6148
+    total_hours = 1000
+    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=total_hours)  # 6148
     # starting_num = int(sys.argv[1])
     # simulations = monte_carlo_simulator_parallel(ubem=ubem, num_simulations=50, starting_num=starting_num)
     # pickle.dump(simulations, open(os.getcwd() + '/test005_1000_1000_50_' + str(starting_num) + '.obj', 'wb'))
 
     # Extract simulations
-    list_of_simulations = [pickle.load(open(os.getcwd() + 'Simulation_output/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
+    list_of_simulations = [pickle.load(open(os.getcwd() + '/Simulation_output/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
                            for num in np.arange(10)]
 
     # PSO
     betas = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     indices = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
-    training_hours = np.arange(1000)
+    training_hours = np.arange(total_hours)
     Ec = np.reshape(ubem.city_electricity_scaled[training_hours], (ubem.modeling_hours,))
 
     # RUN PSO
-
-
-
-
-    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=2000)  # 6148
-    training_hours = np.arange(2000)
-    Ec = np.reshape(ubem.city_electricity_scaled[training_hours], (ubem.modeling_hours,))
     test = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=10, iters=10, global_pso=True, num_buildings=1, rand_intializations=2)
-    test2 = test.run(sim=7)
+    # test2 = test.run(sim=7)
+    test3 = run_pso_parallel(test, sim_num=10)
 
-    sim_num = 2
-    num_buildings = 1
-    rand_intializations = 2
-    pso_dict = {}
-    for sim in np.arange(sim_num):
-        print(sim)
-        all_buildings = create_all_buildings(ubem=ubem, total_simulations=num_buildings, sim_num=sim)
-        for i in np.arange(rand_intializations):
-            cost, pos = pso(ubem=ubem, all_buildings=all_buildings, betas=betas, Ec=Ec, n_particles=10, iters=10,
-                            global_pso=False)
-            key = 'sim_num_' + str(sim) + '_rand_' + str(i)
-            pso_dict[key] = {cost: pos}
 
-    pickle.dump(pso_dict, open(os.getcwd() + '/pso_total_sims_' + str(num_buildings) +
-                               'sim_num' + str(sim_num) +
-                               'rand_intializations' + str(rand_intializations) + '.obj', 'wb'))
+
+
+    # sim_num = 2
+    # num_buildings = 1
+    # rand_intializations = 2
+    # pso_dict = {}
+    # for sim in np.arange(sim_num):
+    #     print(sim)
+    #     all_buildings = create_all_buildings(ubem=ubem, total_simulations=num_buildings, sim_num=sim)
+    #     for i in np.arange(rand_intializations):
+    #         cost, pos = pso(ubem=ubem, all_buildings=all_buildings, betas=betas, Ec=Ec, n_particles=10, iters=10,
+    #                         global_pso=False)
+    #         key = 'sim_num_' + str(sim) + '_rand_' + str(i)
+    #         pso_dict[key] = {cost: pos}
+    #
+    # pickle.dump(pso_dict, open(os.getcwd() + '/pso_total_sims_' + str(num_buildings) +
+    #                            'sim_num' + str(sim_num) +
+    #                            'rand_intializations' + str(rand_intializations) + '.obj', 'wb'))
 
     # Extract errors from log files
-    # all_errors = get_simulation_errors()
-    # all_errors = np.array(all_errors).flatten()
-    #
+    all_errors = get_simulation_errors()
+    all_errors = np.array(all_errors).flatten()
+
     # ax = sns.distplot(all_errors, kde=False, hist=True, color='#274a5c', hist_kws={"alpha":1})
     # ax.axvline(np.mean(all_errors), color='black', linestyle='-')
     # plt.xlabel('Mean Absolute Percentage Error')
     # plt.ylabel('Count')
-    # plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM/Error_Distribution.pdf')
+    # plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distribution.pdf')
     # plt.show()
 
     # # CHECK ERRORS
