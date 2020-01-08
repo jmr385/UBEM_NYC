@@ -483,7 +483,7 @@ def run_pso_parallel(run_pso, sim_num=10):
     pool.join()
 
     stop = timeit.default_timer()
-    print('ALL SIMULATIONS TIME: ', stop - start)  #
+    print('Total Simulations: ', sim_num*2, ' ALL SIMULATIONS TIME: ', stop - start)  #
     return sim_results
 
 
@@ -495,7 +495,7 @@ if __name__ == '__main__':
     # pickle.dump(simulations, open(os.getcwd() + '/test005_1000_1000_50_' + str(starting_num) + '.obj', 'wb'))
 
     # Extract simulations
-    list_of_simulations = [pickle.load(open(os.getcwd() + '/Simulation_output/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
+    list_of_simulations = [pickle.load(open(os.getcwd() + '/Data/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
                            for num in np.arange(10)]
 
     # PSO
@@ -505,33 +505,13 @@ if __name__ == '__main__':
     Ec = np.reshape(ubem.city_electricity_scaled[training_hours], (ubem.modeling_hours,))
 
     # RUN PSO
-    test = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=10, iters=10, global_pso=True, num_buildings=1, rand_intializations=2)
-    # test2 = test.run(sim=7)
-    test3 = run_pso_parallel(test, sim_num=10)
-
-
-
-
-    # sim_num = 2
-    # num_buildings = 1
-    # rand_intializations = 2
-    # pso_dict = {}
-    # for sim in np.arange(sim_num):
-    #     print(sim)
-    #     all_buildings = create_all_buildings(ubem=ubem, total_simulations=num_buildings, sim_num=sim)
-    #     for i in np.arange(rand_intializations):
-    #         cost, pos = pso(ubem=ubem, all_buildings=all_buildings, betas=betas, Ec=Ec, n_particles=10, iters=10,
-    #                         global_pso=False)
-    #         key = 'sim_num_' + str(sim) + '_rand_' + str(i)
-    #         pso_dict[key] = {cost: pos}
-    #
-    # pickle.dump(pso_dict, open(os.getcwd() + '/pso_total_sims_' + str(num_buildings) +
-    #                            'sim_num' + str(sim_num) +
-    #                            'rand_intializations' + str(rand_intializations) + '.obj', 'wb'))
+    run_pso_instance = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=20, iters=20, global_pso=True, num_buildings=1, rand_intializations=1)
+    run_multiple_pso = run_pso_parallel(run_pso_instance, sim_num=500)
+    pickle.dump(run_multiple_pso, open(os.getcwd() + '/Data/sim500_BC1000_HC1000.obj', 'wb'))
 
     # Extract errors from log files
-    all_errors = get_simulation_errors()
-    all_errors = np.array(all_errors).flatten()
+    # all_errors = get_simulation_errors()
+    # all_errors = np.array(all_errors).flatten()
 
     # ax = sns.distplot(all_errors, kde=False, hist=True, color='#274a5c', hist_kws={"alpha":1})
     # ax.axvline(np.mean(all_errors), color='black', linestyle='-')
@@ -544,3 +524,12 @@ if __name__ == '__main__':
     # all_buildings = create_all_buildings(ubem=ubem, total_simulations=1, sim_num=495)
     # check_error(np.repeat(1, 1000), betas, Ec, all_buildings, one_mc_simulation=True, sim_num=496, sim_buildings=1000)
 
+    # CHECK PSO
+    # sim50_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim50_BC1000_HC1000.obj', 'rb'))
+    # costs = np.array([list(k.keys()) for k in sim50_BC1000_HC1000]).flatten()
+
+
+    # HOURLY LOAD OF ONE BUILDING
+    city_hall = '1001220001'
+    city_hall = '3059930068'
+    city_hall_row = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == city_hall,]
