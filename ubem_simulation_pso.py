@@ -23,6 +23,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
 import re
+from os.path import isfile, join
+from os import listdir
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 import random
@@ -316,6 +318,28 @@ class UBEM_Simulator:
         return simulation_results
 
 
+def create_prepared_building(ubem, amx, a_rand, training_hours, sim_ind):
+    y = np.zeros([6 * ubem.building_classes, training_hours])
+    energy_weight = 1
+    j = 0
+
+    np.random.seed(seed=sim_ind)
+    shift_vec = np.rint(np.random.normal(0, 1.5, ubem.sample_buildings))  # TODO
+
+    three_nonzeros = np.nonzero(amx[j, :, 0])  # Get the 3 nonzero entries for each row in AMX (same for all t)
+    i_entry = np.nonzero(a_rand[j, :])  # Determine the PLUTO class for row j
+    three_entries = np.array([i_entry[0], i_entry[0] + 25, i_entry[0] + 50]).flatten()  # ind in new row to fill
+    y[three_entries, :] = amx[j, three_nonzeros, :] * energy_weight  # fill y matrix AND add energy_weight
+    y[three_entries, :] = np.roll(y[three_entries, :], int(shift_vec[j]), axis=1)  # shift all self.modeling_hours in row j
+
+    # Add Temperature and BusinessDay vectors
+    y[(i_entry[0] + 75), :] = ubem.temperature[training_hours-1, :].T  # TODO --->
+    y[(i_entry[0] + 100), :] = ubem.cdd[training_hours-1, :].T
+    y[(i_entry[0] + 125), :] = ubem.bday[training_hours-1]
+    print('Finished creating building...')
+    return y
+
+
 def objective_function(x, all_buildings, betas, Ec, ubem):
     building_beta_assignment = np.rint(x).astype(int)
     print('building_beta_assignment', building_beta_assignment.shape)
@@ -525,11 +549,60 @@ if __name__ == '__main__':
     # check_error(np.repeat(1, 1000), betas, Ec, all_buildings, one_mc_simulation=True, sim_num=496, sim_buildings=1000)
 
     # CHECK PSO
-    # sim50_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim50_BC1000_HC1000.obj', 'rb'))
-    # costs = np.array([list(k.keys()) for k in sim50_BC1000_HC1000]).flatten()
+    sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))
+    costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
 
 
     # HOURLY LOAD OF ONE BUILDING
-    city_hall = '1001220001'
-    city_hall = '3059930068'
-    city_hall_row = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == city_hall,]
+    def create_one_building_timeseries(modeling_hours=8784):
+        building_df = 0
+        return building_df
+
+    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
+    ll84 = pd.read_csv(os.getcwd() + '/Data/LL84.csv')
+    ll84['Energy[kBtu]'] = ll84['Site EUI (kBtu/ft²)'] * ll84['DOF Gross Floor Area']
+    ll84['BBL'] = ll84['BBL - 10 digits'].astype(str)
+    ubem.pluto_export['BBL'] = ubem.pluto_export['BBL'].astype(str)
+
+    chrystler_building = '1012970023.0'
+    chrystler_building_ll84 = ll84.loc[ll84['BBL'] == chrystler_building]
+
+    chrystler_building = '1012970023'
+    chrystler_building_pluto = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == chrystler_building]
+    A_chrystler = ubem.a[chrystler_building_pluto.index, ]
+
+    AMX_chrystler = np.zeros([1, ubem.doe_archetypes, 8784])
+    doe_datasets_needed = np.matmul(A_chrystler, ubem.m)
+
+    for ind, t in enumerate(np.arange(8784)):
+        AMX_chrystler[:, :, ind] = np.matmul(doe_datasets_needed, ubem.x[:, :, t])
+
+    chrystler_prepared = create_prepared_building(ubem=ubem, amx=AMX_chrystler, a_rand=A_chrystler,
+                                                  training_hours=8784, sim_ind=1)
+    chrystler_timeseries = np.matmul(betas[0,:], chrystler_prepared) * chrystler_building_ll84['Energy[kBtu]'].values/8784.
+
+
+
+    'RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv'
+    doe_directory = os.getcwd() + '/Data/DOE_all_datasets/'
+    doe_file_names = [f for f in listdir(doe_directory) if isfile(join(doe_directory, f))]
+    doe_file_number = [f.split('_')[0] for f in doe_file_names]
+
+    doe_datasets_needed_str = np.array(np.nonzero(doe_datasets_needed)[1] + 1).astype(str)
+    three_doe_datasets = [doe_file_names[doe_file_number.index(n)] for n in doe_datasets_needed_str]
+
+    doe_1 = pd.read_csv(os.getcwd() + '/Data/DOE_all_datasets/' + three_doe_datasets[0])
+    doe_2 = pd.read_csv(os.getcwd() + '/Data/DOE_all_datasets/' + three_doe_datasets[1])
+    doe_3 = pd.read_csv(os.getcwd() + '/Data/DOE_all_datasets/' + three_doe_datasets[2])
+
+
+    warehouse = doe_3.copy()
+    row_to_copy = np.array(warehouse.iloc[0,:][1:]).reshape(1, 10)
+    warehouse.iloc[:, 1:] = np.repeat(row_to_copy, 8760 , axis=0)
+    warehouse.to_csv(os.getcwd() + '/Data/DOE_all_datasets/19_warehouse.csv')
+
+
+
+
+
+
