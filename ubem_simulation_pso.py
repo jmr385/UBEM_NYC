@@ -623,6 +623,7 @@ if __name__ == '__main__':
 
 
 
+
     # MANUAL SCALING and X matrix
     sf = 0.5
     new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
