@@ -621,9 +621,6 @@ if __name__ == '__main__':
     doe_2a = scale_all_doe_columns(doe_df=doe_2a)
     doe_3a = scale_all_doe_columns(doe_df=doe_3a)
 
-
-
-
     # MANUAL SCALING and X matrix
     sf = 0.5
     new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
