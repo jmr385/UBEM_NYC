@@ -518,12 +518,36 @@ def scale_all_doe_columns(doe_df):
     doe_df['EFans_scaled'] = doe_df['Fans:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
     doe_df['ECooling_scaled'] = doe_df['Cooling:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
     doe_df['EHeating_scaled'] = doe_df['Heating:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
-    doe_df['ELights_scaled'] = doe_df['InteriorLights:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
-    doe_df['EEquipment_scaled'] = doe_df['InteriorEquipment:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
     doe_df['Gas_scaled'] = doe_df['Gas:Facility [kW](Hourly)'] / doe_df['TE_scaled']
     doe_df['GHeating_scaled'] = doe_df['Heating:Gas [kW](Hourly)'] / doe_df['TE_scaled']
-    doe_df['GWaterheat_scaled'] = doe_df['Water Heater:WaterSystems:Gas [kW](Hourly)'] / doe_df['TE_scaled']
+    print('doe shape: ', doe_df.shape[1])
+    if doe_df.shape[1] == 20:
+        doe_df['ELights_scaled'] = doe_df['InteriorLights:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
+        doe_df['EEquipment_scaled'] = doe_df['InteriorEquipment:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
+        doe_df['GWaterheat_scaled'] = doe_df['Water Heater:WaterSystems:Gas [kW](Hourly)'] / doe_df['TE_scaled']
+
+    else:
+        doe_df['ELights_scaled'] = doe_df['General:InteriorLights:Electricity [kW](Hourly)'] / doe_df['TE_scaled'] +\
+                                   doe_df['General:ExteriorLights:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
+        doe_df['EEquipment_scaled'] = doe_df['Appl:InteriorEquipment:Electricity [kW](Hourly)'] / doe_df['TE_scaled'] +\
+                                      doe_df['Misc:InteriorEquipment:Electricity [kW](Hourly)'] / doe_df['TE_scaled']
+        doe_df['EWaterheat_scaled'] = doe_df['Water Heater:WaterSystems:Electricity [kW](Hourly) '] / doe_df['TE_scaled']
     return doe_df
+
+
+def create_new_x(ubem, doe_datasets_needed_3, doe_1a, doe_2a, doe_3a, sf=0.5):
+    # MANUAL SCALING and X matrix
+    new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
+    doe_ref_buildings_energy = ubem.doe_ref_buildings.copy()
+    doe_ref_buildings_energy.iloc[:, 2:] = 0
+    doe_ref_buildings_energy.iloc[:, list(doe_datasets_needed_3 + 1)] = np.array([doe_1a['TE_scaled'],
+                                                                                  doe_2a['TE_scaled'],
+                                                                                  doe_3a['TE_scaled']]).T
+    for k in range(ubem.doe_archetypes):
+        new_x[k, k, :] = ubem.doe_ref_buildings.values[:, k + 2]
+        new_x[k, k, :] = sf * (new_x[k, k, :]) / np.mean(new_x[k, k, :8784]) + (1 - sf)
+    return new_x
+
 
 if __name__ == '__main__':
     total_hours = 1000
@@ -567,21 +591,52 @@ if __name__ == '__main__':
     costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
 
 
-    # HOURLY LOAD OF ONE BUILDING
-    doe_directory = os.getcwd() + '/Data/DOE_all_datasets/'
+    # HOURLY LOAD ONE BUILDING
+    doe_directory = os.getcwd() + '/Data/DOE_raw/'
     doe_file_names = [f for f in listdir(doe_directory) if isfile(join(doe_directory, f))]
     doe_file_number = [f.split('_')[0] for f in doe_file_names]
     doe_file_number_sorted = np.sort(np.array(doe_file_number).astype(int)).astype(str)
     all_doe_datasets = [doe_file_names[doe_file_number.index(n)] for n in doe_file_number_sorted]
-    doe_list = [pd.read_csv(os.getcwd() + '/Data/DOE_all_datasets/' + n) for n in all_doe_datasets]
+    doe_list = np.array([pd.read_csv(os.getcwd() + '/Data/DOE_raw/' + n) for n in all_doe_datasets])
+    doe_list2 = [pd.concat([d.iloc[0:1416, ], d.iloc[1416:1440, ], d.iloc[1416:, ]]) for d in doe_list]
+    doe_test = ['InteriorLights:Electricity [kW](Hourly)' in d.columns for d in doe_list2]
 
-    def create_one_building_timeseries(ubem, bbl, modeling_hours=8784):
+    doe_list2 = [scale_all_doe_columns(doe_df=d) for d in doe_list2]
+
+
+    def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=8784.):
+
         building_pluto = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == bbl]
         A_building = ubem.a[building_pluto.index,]
+        doe_datasets_needed = np.matmul(A_building, ubem.m)
+        doe_datasets_needed_3 = list(np.nonzero(doe_datasets_needed)[1])
+        three_doe_datasets = doe_list[doe_datasets_needed_3]
 
-        building_df = 0
-        return building_df
+        doe_1 = three_doe_datasets[0]
+        doe_2 = three_doe_datasets[1]
+        doe_3 = three_doe_datasets[2]
 
+        doe_1a = pd.concat([doe_1.iloc[0:1416, ], doe_1.iloc[1416:1440, ], doe_1.iloc[1416:, ]])
+        doe_2a = pd.concat([doe_2.iloc[0:1416, ], doe_2.iloc[1416:1440, ], doe_2.iloc[1416:, ]])
+        doe_3a = pd.concat([doe_3.iloc[0:1416, ], doe_3.iloc[1416:1440, ], doe_3.iloc[1416:, ]])
+
+        doe_1a = scale_all_doe_columns(doe_df=doe_1a)
+        doe_2a = scale_all_doe_columns(doe_df=doe_2a)
+        doe_3a = scale_all_doe_columns(doe_df=doe_3a)
+        print(doe_3a.shape)
+
+        new_x = create_new_x(ubem=ubem, doe_datasets_needed_3=doe_datasets_needed_3,
+                             doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a)
+        AMX_building = np.zeros([1, ubem.doe_archetypes, modeling_hours])
+        for ind, t in enumerate(np.arange(8784)):
+            AMX_building[:, :, ind] = np.matmul(doe_datasets_needed, ubem.x[:, :, t])
+
+        building_prepared = create_prepared_building(ubem=ubem, amx=AMX_building, a_rand=A_building,
+                                                     training_hours=modeling_hours, sim_ind=1)
+        building_timeseries = np.matmul(betas[0, :], building_prepared) * building_pluto['Energy_kbtu'].values / modeling_hours
+        building_hourly = pd.DataFrame({'Total Energy': building_timeseries})
+
+        return building_hourly
 
 
 
@@ -640,15 +695,37 @@ if __name__ == '__main__':
 
     chrystler_prepared = create_prepared_building(ubem=ubem, amx=AMX_chrystler, a_rand=A_chrystler,
                                                   training_hours=8784, sim_ind=1)
-    chrystler_timeseries = np.matmul(betas[0,:], chrystler_prepared) * chrystler_building_ll84['Energy[kBtu]'].values/8784.
+    chrystler_timeseries = np.matmul(betas[0, :], chrystler_prepared) * chrystler_building_ll84['Energy[kBtu]'].values/8784.
     chrystler_building_hourly = pd.DataFrame({'Total Energy': chrystler_timeseries})
-    chrystler_building_hourly['Electricity']
+    chrystler_building_hourly['Electricity'] =
 
 
-    def create_new_x()
+    def create_new_x(ubem, doe_datasets_needed_3, doe_1a, doe_2a, doe_3a, column='TE_scaled', sf=0.5):
+        # MANUAL SCALING and X matrix
+        new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
+        doe_ref_buildings_energy = ubem.doe_ref_buildings.copy()
+        doe_ref_buildings_energy.iloc[:, 2:] = 0
+        doe_ref_buildings_energy.iloc[:, list(doe_datasets_needed_3 + 1)] = np.array([doe_1a[column],
+                                                                                      doe_2a[column],
+                                                                                      doe_3a[column]]).T
+        for k in range(ubem.doe_archetypes):
+            new_x[k, k, :] = ubem.doe_ref_buildings.values[:, k + 2]
+            new_x[k, k, :] = sf * (new_x[k, k, :]) / np.mean(new_x[k, k, :8784]) + (1 - sf)
+        return new_x
 
 
+    def create_hourly_load(ubem, x, A_building, doe_datasets_needed_3,
+                           doe_1a, doe_2a, doe_3a, column='TE_scaled', sf=0.5):
 
+        new_x = create_new_x(ubem=ubem, doe_datasets_needed_3=doe_datasets_needed_3,
+                             doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a, column='TE_scaled', sf=0.5)
 
+        AMX_building = np.zeros([1, ubem.doe_archetypes, 8784])
+        doe_datasets_needed = np.matmul(A_chrystler, ubem.m)
+        for ind, t in enumerate(np.arange(8784)):
+            AMX_building[:, :, ind] = np.matmul(doe_datasets_needed, x[:, :, t])
 
+        building_prepared = create_prepared_building(ubem=ubem, amx=AMX_building, a_rand=A_building,
+                                                      training_hours=8784, sim_ind=1)
+        building_timeseries = np.matmul(betas[0, :], building_prepared) * chrystler_building_ll84['Energy[kBtu]'].values/8784.
 
