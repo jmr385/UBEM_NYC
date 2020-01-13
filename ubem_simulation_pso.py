@@ -596,9 +596,9 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=87
         bbl = bbl + '.0'
         energy = ll84.loc[ll84['BBL'] == bbl, 'Energy_kbtu'].values
 
-    doe_1a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[0])
-    doe_2a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[1])
-    doe_3a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[2])
+    doe_1a = three_doe_datasets[0]
+    doe_2a = three_doe_datasets[1]
+    doe_3a = three_doe_datasets[2]
     print(doe_3a.shape)
 
     # MANUAL SCALING and X matrix
@@ -623,7 +623,68 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=87
     building_timeseries = np.matmul(betas[0, :], building_prepared) * energy / modeling_hours
     building_hourly = pd.DataFrame({'Total Energy': building_timeseries})
 
+    beta_vec = betas[288,:]
+    building_hourly['Electricity'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='Electricity_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Gas'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='Gas_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Cooling'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='ECooling_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Lights'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='ELights_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Equipment'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='EEquipment_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Gas_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='GHeating_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Elec_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='EHeating_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['GWater_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
+                                                                  column_name='GWaterheat_scaled',
+                                                                  energy=building_hourly['Total Energy'])
+    building_hourly['Heating'] = building_hourly['Gas_Heating'] + \
+                                 building_hourly['Elec_Heating'] + \
+                                 building_hourly['GWater_Heating']
+
+    building_hourly['Cooling'] = np.abs(building_hourly['Cooling'])
+
     return building_hourly
+
+
+def beta_distribution(betas, pluto_class):
+    # pluto_class = 0
+    beta1 = betas[:, pluto_class]
+    beta2 = betas[:, pluto_class+25]
+    beta3 = betas[:, pluto_class+50]
+    bins = np.linspace(0, 1.1, 11)
+    # plt.hist(beta1, bins, alpha=0.5, label='Beta 1')
+    # plt.hist(beta2, bins, alpha=0.5, label='Beta 2')
+    # plt.hist(beta3, bins, alpha=0.5, label='Beta 3')
+    # plt.legend(loc='upper right')
+    # plt.show()
+
+    plt.hist([beta1, beta2, beta3], bins-0.05, label=['Beta 1', 'Beta 2','Beta 3'])
+    plt.locator_params(axis='x', nbins=20)
+    plt.legend(loc='best')
+    plt.xlabel('Parameter Value')
+    plt.ylabel('Count')
+    plt.title('PLUTO CLASS ' + str(pluto_class))
+    plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + str(pluto_class) + '.pdf')
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -659,6 +720,10 @@ if __name__ == '__main__':
     # plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distribution.pdf')
     # plt.show()
 
+    # PLOT BETA DISTRIBUTIONS
+    # [beta_distribution(betas, i) for i in range(25)]
+    # np.sum(betas[:,18])
+
     # # CHECK ERRORS
     # all_buildings = create_all_buildings(ubem=ubem, total_simulations=1, sim_num=495)
     # check_error(np.repeat(1, 1000), betas, Ec, all_buildings, one_mc_simulation=True, sim_num=496, sim_buildings=1000)
@@ -667,14 +732,8 @@ if __name__ == '__main__':
     sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))
     costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
 
-
     # HOURLY LOAD ONE BUILDING
     doe_list = scale_all_doe_datasets(calculate=True)
-
-
-
-
-
 
 
     ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
