@@ -408,25 +408,6 @@ def random_betas_new(all_buildings, betas, Ec, iters=50):
     return results
 
 
-def check_error(pos, betas, Ec, all_buildings, one_mc_simulation=False, sim_num=0, sim_buildings=500):
-    # CHECK IF ERROR ALIGNS
-    num_buildings = all_buildings.shape[0]
-    mc_simulations = len(betas)
-    if not one_mc_simulation:
-        building_beta_assignment = np.rint(pos).astype(int)
-        Eaj_hat = np.array([all_buildings[j, :, :].T * betas[building_beta_assignment[j]] for j in range(num_buildings)])
-        adj = len(betas)  # np.sum(Ea_hat) / np.sum(Ec) # TODO: This or 4?
-    else:
-        building_beta_assignment = np.repeat(sim_num, sim_buildings)
-        Eaj_hat = np.array([all_buildings[j, :, :].T * betas[sim_num-1] for j in range(sim_buildings)])
-        adj = 1
-    Ea_hat = np.sum(Eaj_hat, axis=2)
-    Ea_hat = np.sum(Ea_hat, axis=0).reshape(ubem.modeling_hours, )
-    error = np.mean(np.abs(Ea_hat - adj * Ec[:ubem.modeling_hours]) / (adj * Ec[:ubem.modeling_hours]) * 100)
-    print('Checking Error: ', error)
-    return error
-
-
 def monte_carlo_simulator_parallel(ubem, num_simulations, starting_num):
     start = timeit.default_timer()
 
@@ -579,22 +560,23 @@ def create_hour_dataframe():
     return 0
 
 
-def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=8784., ll84=False):
+def create_one_building_timeseries(ubem, betas, bbl, doe_list, beta_num=288, modeling_hours=8784, ll84=False):
 
     ubem.pluto_export['BBL'] = ubem.pluto_export['BBL'].astype(str)
     building_pluto = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == bbl]
     A_building = ubem.a[building_pluto.index,]
     doe_datasets_needed = np.matmul(A_building, ubem.m)
     doe_datasets_needed_3 = list(np.nonzero(doe_datasets_needed)[1])
+    print(doe_datasets_needed_3)
     three_doe_datasets = doe_list[doe_datasets_needed_3]
-    energy = ubem.pluto_export.loc[ll84['BBL'] == bbl, 'Energy_kbtu'].values
+    energy = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == bbl, 'Energy_kbtu'].values
 
     if ll84 == True:
         ll84 = pd.read_csv(os.getcwd() + '/Data/LL84.csv')
         ll84['Energy[kBtu]'] = ll84['Site EUI (kBtu/ft²)'] * ll84['DOF Gross Floor Area']
         ll84['BBL'] = ll84['BBL - 10 digits'].astype(str)
         bbl = bbl + '.0'
-        energy = ll84.loc[ll84['BBL'] == bbl, 'Energy_kbtu'].values
+        energy = ll84.loc[ll84['BBL'] == bbl, 'Energy[kBtu]'].values
 
     doe_1a = three_doe_datasets[0]
     doe_2a = three_doe_datasets[1]
@@ -623,7 +605,7 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=87
     building_timeseries = np.matmul(betas[0, :], building_prepared) * energy / modeling_hours
     building_hourly = pd.DataFrame({'Total Energy': building_timeseries})
 
-    beta_vec = betas[288,:]
+    beta_vec = betas[beta_num, :]
     building_hourly['Electricity'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='Electricity_scaled',
@@ -666,16 +648,12 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, modeling_hours=87
 
 
 def beta_distribution(betas, pluto_class):
+    import matplotlib.pyplot as plt
     # pluto_class = 0
     beta1 = betas[:, pluto_class]
     beta2 = betas[:, pluto_class+25]
     beta3 = betas[:, pluto_class+50]
     bins = np.linspace(0, 1.1, 11)
-    # plt.hist(beta1, bins, alpha=0.5, label='Beta 1')
-    # plt.hist(beta2, bins, alpha=0.5, label='Beta 2')
-    # plt.hist(beta3, bins, alpha=0.5, label='Beta 3')
-    # plt.legend(loc='upper right')
-    # plt.show()
 
     plt.hist([beta1, beta2, beta3], bins-0.05, label=['Beta 1', 'Beta 2','Beta 3'])
     plt.locator_params(axis='x', nbins=20)
@@ -683,8 +661,79 @@ def beta_distribution(betas, pluto_class):
     plt.xlabel('Parameter Value')
     plt.ylabel('Count')
     plt.title('PLUTO CLASS ' + str(pluto_class))
-    plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + str(pluto_class) + '.pdf')
+    # plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + str(pluto_class) + '.pdf')
     plt.show()
+
+
+def beta_distribution5x5(betas, pluto_classes):
+    import matplotlib.pyplot as plt
+
+    for p in pluto_classes:
+        beta1 = betas[:, p]
+        beta2 = betas[:, p+25]
+        beta3 = betas[:, p+50]
+        bins = np.linspace(0, 1.1, 11)
+        #fig.subplots_adjust(hspace=0.4, wspace=0.4)
+        plt.subplot(5, 5, p)
+
+        plt.hist([beta1, beta2, beta3], bins-0.05, label=['Beta 1', 'Beta 2','Beta 3'], normed=True)
+        plt.locator_params(axis='x', nbins=20)
+        # plt.legend(loc='best')
+        # plt.xlabel('Parameter Value')
+        # plt.ylabel('Count')
+        # plt.title('PLUTO CLASS ' + str(p))
+        # plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + str(pluto_class) + '.pdf')
+    plt.show()
+
+
+def plot_2x2_hourly_load(ubem, building_hourly, start=0, end=168, duration=168):
+    import matplotlib.pyplot as plt
+    dates = ubem.doe_ref_buildings.iloc[0:duration, 1]
+
+    plt.plot(np.arange(duration), building_hourly['Total Energy'].iloc[start:end], color='k')
+    plt.plot(np.arange(duration), building_hourly['Electricity'].iloc[start:end], color='orange')
+    plt.plot(np.arange(duration), building_hourly['Gas'].iloc[start:end], color='saddlebrown')
+    plt.ylabel('Energy [kBtu]')
+    plt.legend(('Total Energy', 'Electricity', 'Gas'), loc=2)
+    cur_axes = plt.gca()
+    cur_axes.axes.get_xaxis().set_visible(False)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 4.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyEnergy_' + str(start) + '_.pdf')
+    plt.show()
+
+    plt.plot(np.arange(duration), building_hourly['Cooling'].iloc[start:end], color='b')
+    plt.plot(np.arange(duration), building_hourly['Heating'].iloc[start:end], color='r')
+    plt.plot(np.arange(duration), building_hourly['GWater_Heating'].iloc[start:end], color='maroon')
+    plt.legend(('Cooling', 'Heating', 'Water Heating'), loc=2)
+    plt.ylabel('Energy [kBtu]')
+    plt.xlabel('Hours')
+    plt.xticks(np.arange(0, duration, step=24),
+               ('12am Sun', '12am Mon', '12am Tue', '12am Wed', '12am Thr', '12am Fri', '12am Sat'),
+               rotation=36)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 5.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyCoolHeat_' + str(start) + '_.pdf')
+    plt.show()
+
+
+def check_error(pos, betas, Ec, all_buildings, one_mc_simulation=False, sim_num=0, sim_buildings=500):
+    # CHECK IF ERROR ALIGNS
+    num_buildings = all_buildings.shape[0]
+    mc_simulations = len(betas)
+    if not one_mc_simulation:
+        building_beta_assignment = np.rint(pos).astype(int)
+        Eaj_hat = np.array([all_buildings[j, :, :].T * betas[building_beta_assignment[j]] for j in range(num_buildings)])
+        adj = len(betas)  # np.sum(Ea_hat) / np.sum(Ec) # TODO: This or 4?
+    else:
+        building_beta_assignment = np.repeat(sim_num, sim_buildings)
+        Eaj_hat = np.array([all_buildings[j, :, :].T * betas[sim_num-1] for j in range(sim_buildings)])
+        adj = 1
+    Ea_hat = np.sum(Eaj_hat, axis=2)
+    Ea_hat = np.sum(Ea_hat, axis=0).reshape(ubem.modeling_hours, )
+    error = np.mean(np.abs(Ea_hat - adj * Ec[:ubem.modeling_hours]) / (adj * Ec[:ubem.modeling_hours]) * 100)
+    print('Checking Error: ', error)
+    return error
 
 
 if __name__ == '__main__':
@@ -710,9 +759,27 @@ if __name__ == '__main__':
     pickle.dump(run_multiple_pso, open(os.getcwd() + '/Data/sim500_BC1000_HC1000.obj', 'wb'))
 
     # Extract errors from log files
-    # all_errors = get_simulation_errors()
-    # all_errors = np.array(all_errors).flatten()
+    all_errors = get_simulation_errors()
+    all_errors = np.array(all_errors).flatten()
 
+    # # CHECK ERRORS
+    all_buildings = create_all_buildings(ubem=ubem, total_simulations=1, sim_num=495)
+    check_error(pos=np.repeat(1, 1000), betas=betas, Ec=Ec, all_buildings=all_buildings,
+                one_mc_simulation=True, sim_num=496, sim_buildings=1000)
+
+    # CHECK PSO
+    sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))
+    costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
+
+    # HOURLY LOAD ONE BUILDING
+    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
+    doe_list = np.array(scale_all_doe_datasets(calculate=False))
+    chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
+    chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
+
+
+
+    # PLOT ERROR DISTRIBUTION
     # ax = sns.distplot(all_errors, kde=False, hist=True, color='#274a5c', hist_kws={"alpha":1})
     # ax.axvline(np.mean(all_errors), color='black', linestyle='-')
     # plt.xlabel('Mean Absolute Percentage Error')
@@ -720,144 +787,56 @@ if __name__ == '__main__':
     # plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distribution.pdf')
     # plt.show()
 
-    # PLOT BETA DISTRIBUTIONS
+    # PLOT BETA DISTRIBUTIONS & BUILDING HOURLY LOADS
+    # plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=7*24, end=7*24+168, duration=168)
+    # plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=152*24 + 3*24, end=152*24 + 3*24+168, duration=168)
     # [beta_distribution(betas, i) for i in range(25)]
     # np.sum(betas[:,18])
+    from itertools import product
+    fig11 = plt.figure(figsize=(15, 15), constrained_layout=False)
 
-    # # CHECK ERRORS
-    # all_buildings = create_all_buildings(ubem=ubem, total_simulations=1, sim_num=495)
-    # check_error(np.repeat(1, 1000), betas, Ec, all_buildings, one_mc_simulation=True, sim_num=496, sim_buildings=1000)
+    # gridspec inside gridspec
+    outer_grid = fig11.add_gridspec(5, 5, wspace=0.0, hspace=0.0)
 
-    # CHECK PSO
-    sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))
-    costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
+    for p in range(25):
+        beta1 = betas[:, p]
+        beta2 = betas[:, p+25]
+        beta3 = betas[:, p+50]
+        bins = np.linspace(0, 1.1, 11)
+        weights = np.ones_like(beta1) / float(len(beta1))
+        # inner_grid = outer_grid[p].subgridspec(3, 3, wspace=0.0, hspace=0.0)
+        ax = fig11.add_subplot(outer_grid[p])
+        ax.hist([beta1, beta2, beta3], bins-0.05, weights=[weights, weights, weights])
+        if p >= 20 :
+            ax.xaxis.set_ticks_position('bottom')
+            #ax.set_xticks(bins)
+        else:
+            ax.set_xticks([])
 
-    # HOURLY LOAD ONE BUILDING
-    doe_list = scale_all_doe_datasets(calculate=True)
+        if p % 5 == 0:
+            ax.yaxis.set_ticks_position('left')
+            # ax.set_yticks(bins)
+        else:
+            ax.set_yticks([])
 
+        fig11.add_subplot(ax)
+    plt.show()
 
-    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
-    ll84 = pd.read_csv(os.getcwd() + '/Data/LL84.csv')
-    ll84['Energy[kBtu]'] = ll84['Site EUI (kBtu/ft²)'] * ll84['DOF Gross Floor Area']
-    ll84['BBL'] = ll84['BBL - 10 digits'].astype(str)
-    ubem.pluto_export['BBL'] = ubem.pluto_export['BBL'].astype(str)
+    all_axes = fig11.get_axes()
 
-    chrystler_building = '1012970023.0'
-    chrystler_building_ll84 = ll84.loc[ll84['BBL'] == chrystler_building]
+    # show only the outside spines
+    for ax in all_axes:
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+        if ax.is_first_row():
+            ax.spines['top'].set_visible(True)
+        if ax.is_last_row():
+            ax.spines['bottom'].set_visible(True)
+            ax.xaxis.set_ticks_position('bottom')
+        if ax.is_first_col():
+            ax.spines['left'].set_visible(True)
+            ax.xaxis.set_ticks_position('bottom')
+        if ax.is_last_col():
+            ax.spines['right'].set_visible(True)
 
-    chrystler_building = '1012970023'
-    chrystler_building_pluto = ubem.pluto_export.loc[ubem.pluto_export['BBL'] == chrystler_building]
-    A_chrystler = ubem.a[chrystler_building_pluto.index, ]
-
-    # GET DOE CSV FILES
-    doe_directory = os.getcwd() + '/Data/DOE_scaled/'
-    doe_file_names = [f for f in listdir(doe_directory) if isfile(join(doe_directory, f))]
-    doe_file_number = [f.split('_')[0] for f in doe_file_names]
-    doe_datasets_needed = np.matmul(A_chrystler, ubem.m)
-
-    doe_datasets_needed_str = np.array(np.nonzero(doe_datasets_needed)[1] + 1).astype(str)
-    three_doe_datasets = [doe_file_names[doe_file_number.index(n)] for n in doe_datasets_needed_str]
-
-    doe_1a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[0])
-    doe_2a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[1])
-    doe_3a = pd.read_csv(os.getcwd() + '/Data/DOE_scaled/' + three_doe_datasets[2])
-
-    # MANUAL SCALING and X matrix
-    sf = 0.5
-    new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
-    doe_ref_buildings_energy = ubem.doe_ref_buildings.copy()
-    doe_ref_buildings_energy.iloc[:, 2:] = 0
-    doe_ref_buildings_energy.iloc[:, list(doe_datasets_needed_str.astype(int)+1)] = np.array([doe_1a['TE_scaled'],
-                                                                                              doe_2a['TE_scaled'],
-                                                                                              doe_3a['TE_scaled']]).T
-    for k in range(ubem.doe_archetypes):
-        new_x[k, k, :] = ubem.doe_ref_buildings.values[:, k + 2]
-        new_x[k, k, :] = sf * (new_x[k, k, :]) / np.mean(new_x[k, k, :8784]) + (1 - sf)
-
-    AMX_chrystler = np.zeros([1, ubem.doe_archetypes, 8784])
-    doe_datasets_needed = np.matmul(A_chrystler, ubem.m)
-    for ind, t in enumerate(np.arange(8784)):
-        AMX_chrystler[:, :, ind] = np.matmul(doe_datasets_needed, ubem.x[:, :, t])
-
-    chrystler_prepared = create_prepared_building(ubem=ubem, amx=AMX_chrystler, a_rand=A_chrystler,
-                                                  training_hours=8784, sim_ind=1)
-    chrystler_timeseries = np.matmul(betas[0, :], chrystler_prepared) * chrystler_building_ll84['Energy[kBtu]'].values/8784.
-    chrystler_building_hourly = pd.DataFrame({'Total Energy': chrystler_timeseries})
-    beta_vec = betas[288,:]
-    chrystler_building_hourly['Electricity'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='Electricity_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Gas'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='Gas_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Cooling'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='ECooling_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Lights'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='ELights_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Equipment'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='EEquipment_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Gas_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='GHeating_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Elec_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='EHeating_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['GWater_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
-                                                                  doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
-                                                                  column_name='GWaterheat_scaled',
-                                                                  energy=chrystler_building_hourly['Total Energy'])
-    chrystler_building_hourly['Heating'] = chrystler_building_hourly['Gas_Heating'] + \
-                                           chrystler_building_hourly['Elec_Heating'] + \
-                                           chrystler_building_hourly['GWater_Heating']
-
-    chrystler_building_hourly['Cooling'] = np.abs(chrystler_building_hourly['Cooling'])
-
-
-    chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
-
-    def plot_2x2_hourly_load(ubem, building_hourly, start=0, end=168, duration=168):
-        import matplotlib.pyplot as plt
-        dates = ubem.doe_ref_buildings.iloc[0:duration, 1]
-
-        plt.plot(np.arange(duration), building_hourly['Total Energy'].iloc[start:end], color='k')
-        plt.plot(np.arange(duration), building_hourly['Electricity'].iloc[start:end], color='orange')
-        plt.plot(np.arange(duration), building_hourly['Gas'].iloc[start:end], color='saddlebrown')
-        plt.ylabel('Energy [kBtu]')
-        plt.legend(('Total Energy', 'Electricity', 'Gas'), loc=2)
-        cur_axes = plt.gca()
-        cur_axes.axes.get_xaxis().set_visible(False)
-        fig = plt.gcf()
-        fig.set_size_inches(9, 4.5)
-        plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyEnergy_' + str(start) + '_.pdf')
-        plt.show()
-
-        plt.plot(np.arange(duration), building_hourly['Cooling'].iloc[start:end], color='b')
-        plt.plot(np.arange(duration), building_hourly['Heating'].iloc[start:end], color='r')
-        plt.plot(np.arange(duration), building_hourly['GWater_Heating'].iloc[start:end], color='maroon')
-        plt.legend(('Cooling', 'Heating', 'Water Heating'), loc=2)
-        plt.ylabel('Energy [kBtu]')
-        plt.xlabel('Hours')
-        plt.xticks(np.arange(0, duration, step=24),
-                   ('12am Sun', '12am Mon', '12am Tue', '12am Wed', '12am Thr', '12am Fri', '12am Sat'),
-                   rotation=36)
-        fig = plt.gcf()
-        fig.set_size_inches(9, 5.5)
-        plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyCoolHeat_' + str(start) + '_.pdf')
-        plt.show()
-
-    plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=7*24, end=7*24+168, duration=168)
-    plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=152*24 + 3*24, end=152*24 + 3*24+168, duration=168)
-
-
-
-
+    plt.show()
