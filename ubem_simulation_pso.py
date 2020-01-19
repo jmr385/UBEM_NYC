@@ -25,6 +25,8 @@ import os
 import re
 from os.path import isfile, join
 from os import listdir
+import matplotlib.pyplot as plt
+from building_block_plotting import create_all_buildings as create_all_buildings2
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 import random
@@ -442,7 +444,7 @@ def create_all_buildings(ubem, total_simulations, sim_num=0):
 
 
 def get_simulation_errors():
-    logs = [1, 2, 65, 115, 215, 265, 315, 365, 415, 465]
+    logs = [15, 65, 115, 165, 215, 265, 315, 365, 415, 465]
     log_files = [os.getcwd() + '/Simulation_output/UBEM_batch' + str(x) + '.log' for x in logs]
     all_errors = []
     for f in log_files:
@@ -459,19 +461,19 @@ def get_simulation_errors():
 
 class run_pso:
 
-    def __init__(self, ubem, betas, Ec, n_particles, iters, global_pso, num_buildings, rand_intializations):
+    def __init__(self, ubem, betas, Ec, n_particles, iters, global_pso, training_hours, rand_intializations):
         self.ubem = ubem
         self.betas = betas
         self.Ec = Ec
         self.n_particles = n_particles
         self.iters = iters
         self.global_pso = global_pso
-        self.num_buildings = num_buildings
+        self.training_hours = training_hours
         self.rand_intializations = rand_intializations
 
     def run(self, sim):
         pso_dict = {}
-        all_buildings = create_all_buildings(ubem=self.ubem, total_simulations=self.num_buildings, sim_num=sim)
+        all_buildings = create_all_buildings2(ubem=self.ubem, training_hours=self.training_hours, sim_num=sim)
         for i in np.arange(self.rand_intializations):
             cost, pos = pso(ubem=self.ubem, all_buildings=all_buildings, betas=self.betas, Ec=self.Ec,
                             n_particles=self.n_particles, iters=self.iters, global_pso=self.global_pso)
@@ -479,11 +481,11 @@ class run_pso:
         return pso_dict
 
 
-def run_pso_parallel(run_pso, sim_num=10):
+def run_pso_parallel(run_pso, sim_num=15):
     start = timeit.default_timer()
 
     pool = mp.Pool(5)
-    sim_results = pool.map(run_pso.run, [i for i in np.arange(sim_num)])
+    sim_results = pool.map(run_pso.run, [i for i in np.arange(15, 15+sim_num)])
     pool.close()
     pool.join()
 
@@ -547,11 +549,11 @@ def create_hourly_load(ubem, beta_vec, A_building, doe_1a, doe_2a, doe_3a, colum
     d2 = np.array(doe_2a[column_name] * beta_vec[i_entry + 25]).reshape(hours, 1)
     d3 = np.array(doe_3a[column_name] * beta_vec[i_entry + 50]).reshape(hours, 1)
 
-    # t1 = ubem.temperature * beta_vec[i_entry + 75]
-    # c1 = ubem.cdd * beta_vec[i_entry + 100]
-    # b1 = ubem.bday * beta_vec[i_entry + 125]
+    t1 = ubem.temperature * beta_vec[i_entry + 75]
+    c1 = ubem.cdd * beta_vec[i_entry + 100]
+    b1 = ubem.bday * beta_vec[i_entry + 125]
 
-    final_vec = d1 + d2 + d3 # + t1.reshape(hours, 1) + c1.reshape(hours, 1) + b1.reshape(hours, 1)
+    final_vec = d1 + d2 + d3 + t1.reshape(hours, 1) + c1.reshape(hours, 1) + b1.reshape(hours, 1)
 
     return final_vec * np.array(energy).reshape(hours,1)
 
@@ -588,7 +590,7 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, beta_num=288, mod
     new_x = np.zeros([ubem.doe_archetypes, ubem.doe_archetypes, ubem.total_hours]).astype(float)
     doe_ref_buildings_energy = ubem.doe_ref_buildings.copy()
     doe_ref_buildings_energy.iloc[:, 2:] = 0
-    doe_ref_buildings_energy.iloc[:, list(doe_datasets_needed_str.astype(int)+1)] = np.array([doe_1a['TE_scaled'],
+    doe_ref_buildings_energy.iloc[:, list(np.array(doe_datasets_needed_3)+2)] = np.array([doe_1a['TE_scaled'],
                                                                                               doe_2a['TE_scaled'],
                                                                                               doe_3a['TE_scaled']]).T
     for k in range(ubem.doe_archetypes):
@@ -602,39 +604,39 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, beta_num=288, mod
 
     building_prepared = create_prepared_building(ubem=ubem, amx=AMX_building, a_rand=A_building,
                                                  training_hours=modeling_hours, sim_ind=1)
-    building_timeseries = np.matmul(betas[0, :], building_prepared) * energy / modeling_hours
+    building_timeseries = np.matmul(betas[beta_num, :], building_prepared) * energy / modeling_hours
     building_hourly = pd.DataFrame({'Total Energy': building_timeseries})
 
     beta_vec = betas[beta_num, :]
-    building_hourly['Electricity'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Electricity'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='Electricity_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Gas'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Gas'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='Gas_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Cooling'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Cooling'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='ECooling_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Lights'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Lights'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='ELights_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Equipment'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Equipment'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='EEquipment_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Gas_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Gas_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='GHeating_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['Elec_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['Elec_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='EHeating_scaled',
                                                                   energy=building_hourly['Total Energy'])
-    building_hourly['GWater_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_chrystler,
+    building_hourly['GWater_Heating'] = create_hourly_load(ubem=ubem, beta_vec=beta_vec, A_building=A_building,
                                                                   doe_1a=doe_1a, doe_2a=doe_2a, doe_3a=doe_3a,
                                                                   column_name='GWaterheat_scaled',
                                                                   energy=building_hourly['Total Energy'])
@@ -717,6 +719,44 @@ def plot_2x2_hourly_load(ubem, building_hourly, start=0, end=168, duration=168):
     plt.show()
 
 
+def plot_all_hourly_loads(all_buildings, start=0, end=168, duration=168):
+
+    select_betas = np.array([0, 30, 54, 72, 76, 86, 97, 104, 105, 108, 113])
+    for i in np.arange(betas.shape[0]):  #betas.shape[0]
+        plt.plot(np.arange(duration), all_buildings[i]['Total Energy'].iloc[start:end], color='k', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Electricity'].iloc[start:end], color='orange', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Gas'].iloc[start:end], color='saddlebrown', alpha=0.1)
+
+    plt.ylabel('Energy [kBtu]')
+    plt.legend(('Total Energy', 'Electricity', 'Gas'), loc=2, frameon=False)
+    ax = plt.gca()
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.axes.get_xaxis().set_visible(False)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 4.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyEnergy_All_' + str(start) + '_.pdf')
+    plt.show()
+
+    for i in np.arange(betas.shape[0]):  #betas.shape[0]
+        plt.plot(np.arange(duration), all_buildings[i]['Cooling'].iloc[start:end], color='b', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Heating'].iloc[start:end], color='r', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['GWater_Heating'].iloc[start:end], color='maroon', alpha=0.1)
+
+    plt.legend(('Cooling', 'Heating', 'Water Heating'), loc=2, frameon=False)
+    plt.ylabel('Energy [kBtu]')
+    plt.xlabel('Hours')
+    plt.xticks(np.arange(0, duration, step=24),
+               ('12am Sun', '12am Mon', '12am Tue', '12am Wed', '12am Thr', '12am Fri', '12am Sat'),
+               rotation=36)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 5.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyCoolHeat_All_' + str(start) + '_.pdf')
+    plt.show()
+
+    return 0
+
+
 def check_error(pos, betas, Ec, all_buildings, one_mc_simulation=False, sim_num=0, sim_buildings=500):
     # CHECK IF ERROR ALIGNS
     num_buildings = all_buildings.shape[0]
@@ -737,6 +777,7 @@ def check_error(pos, betas, Ec, all_buildings, one_mc_simulation=False, sim_num=
 
 
 if __name__ == '__main__':
+    starting_hour = 1000
     total_hours = 1000
     ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=total_hours)  # 6148
     # starting_num = int(sys.argv[1])
@@ -750,22 +791,17 @@ if __name__ == '__main__':
     # PSO
     betas = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     indices = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
-    training_hours = np.arange(total_hours)
+    training_hours = np.arange(starting_hour, starting_hour+total_hours)
     Ec = np.reshape(ubem.city_electricity_scaled[training_hours], (ubem.modeling_hours,))
 
     # RUN PSO
-    run_pso_instance = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=20, iters=20, global_pso=True, num_buildings=1, rand_intializations=1)
+    run_pso_instance = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=20, iters=20, global_pso=True, training_hours=training_hours, rand_intializations=1)
     run_multiple_pso = run_pso_parallel(run_pso_instance, sim_num=500)
-    pickle.dump(run_multiple_pso, open(os.getcwd() + '/Data/sim500_BC1000_HC1000.obj', 'wb'))
+    pickle.dump(run_multiple_pso, open(os.getcwd() + '/Data/of_of_sample_1000hrs_PSO_15_30.obj', 'wb'))
 
     # Extract errors from log files
     all_errors = get_simulation_errors()
     all_errors = np.array(all_errors).flatten()
-
-    # # CHECK ERRORS
-    all_buildings = create_all_buildings(ubem=ubem, total_simulations=1, sim_num=495)
-    check_error(pos=np.repeat(1, 1000), betas=betas, Ec=Ec, all_buildings=all_buildings,
-                one_mc_simulation=True, sim_num=496, sim_buildings=1000)
 
     # CHECK PSO
     sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))

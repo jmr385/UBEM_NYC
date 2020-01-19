@@ -14,3 +14,5 @@
 2020-01-12 19:56:28,736 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
 2020-01-12 19:56:28,756 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
 2020-01-12 20:05:29,942 - matplotlib.legend - WARNING - No handles with labels found to put in legend.
+2020-01-19 20:00:15,441 - matplotlib.legend - WARNING - No handles with labels found to put in legend.
+2020-01-19 20:02:11,698 - matplotlib.legend - WARNING - No handles with labels found to put in legend.
