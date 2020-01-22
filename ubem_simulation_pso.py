@@ -734,9 +734,11 @@ def plot_all_hourly_loads(all_buildings, start=0, end=168, duration=168):
 
     select_betas = np.array([0, 30, 54, 72, 76, 86, 97, 104, 105, 108, 113])
     for i in np.arange(betas.shape[0]):  #betas.shape[0]
-        plt.plot(np.arange(duration), all_buildings[i]['Total Energy'].iloc[start:end], color='k', alpha=0.1)
-        plt.plot(np.arange(duration), all_buildings[i]['Electricity'].iloc[start:end], color='orange', alpha=0.1)
-        plt.plot(np.arange(duration), all_buildings[i]['Gas'].iloc[start:end], color='saddlebrown', alpha=0.1)
+        # shift_vec = int(np.rint(np.random.normal(0, 1.5)))
+        shift_vec = 0
+        plt.plot(np.arange(duration), all_buildings[i]['Total Energy'].iloc[start+shift_vec:end+shift_vec], color='k', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Electricity'].iloc[start+shift_vec:end+shift_vec], color='orange', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Gas'].iloc[start+shift_vec:end+shift_vec], color='saddlebrown', alpha=0.1)
 
     plt.ylabel('Energy [kBtu]')
     plt.legend(('Total Energy', 'Electricity', 'Gas'), loc=2, frameon=False)
@@ -750,9 +752,11 @@ def plot_all_hourly_loads(all_buildings, start=0, end=168, duration=168):
     plt.show()
 
     for i in np.arange(betas.shape[0]):  #betas.shape[0]
-        plt.plot(np.arange(duration), all_buildings[i]['Cooling'].iloc[start:end], color='b', alpha=0.1)
-        plt.plot(np.arange(duration), all_buildings[i]['Heating'].iloc[start:end], color='r', alpha=0.1)
-        plt.plot(np.arange(duration), all_buildings[i]['GWater_Heating'].iloc[start:end], color='maroon', alpha=0.1)
+        # shift_vec = int(np.rint(np.random.normal(0, 1.5)))
+        shift_vec = 0
+        plt.plot(np.arange(duration), all_buildings[i]['Cooling'].iloc[start+shift_vec:end+shift_vec], color='b', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Heating'].iloc[start+shift_vec:end+shift_vec], color='r', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['GWater_Heating'].iloc[start+shift_vec:end+shift_vec], color='maroon', alpha=0.1)
 
     plt.legend(('Cooling', 'Heating', 'Water Heating'), loc=2, frameon=False)
     plt.ylabel('Energy [kBtu]')
@@ -852,6 +856,7 @@ if __name__ == '__main__':
     ax.spines['top'].set_visible(False)
     plt.xlabel('Mean Absolute Percentage Error')
     plt.ylabel('Count')
+    plt.legend()
     plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distributions_PSO.pdf')
     plt.show()
 
