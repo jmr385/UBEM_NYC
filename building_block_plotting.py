@@ -12,7 +12,7 @@ import timeit
 import re
 import matplotlib.pyplot as plt
 from ubem_simulation_pso import UBEM_Simulator, get_simulation_errors, scale_all_doe_datasets, plot_2x2_hourly_load, \
-    create_hourly_load, create_one_building_timeseries
+    create_hourly_load, create_one_building_timeseries, plot_all_hourly_loads
 
 
 def create_all_buildings(ubem, training_hours, sim_num=65):
@@ -86,6 +86,6 @@ if __name__ == '__main__':
     ubem2 = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
     doe_list = np.array(scale_all_doe_datasets(calculate=False))
     all_buildings = [create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=i, modeling_hours=8784, ll84=True) for i in np.arange(betas.shape[0])]
-    plot_all_hourly_loads(all_buildings)
+    plot_all_hourly_loads(all_buildings, start=3720, end=3720+168)
 
 

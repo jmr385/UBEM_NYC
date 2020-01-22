@@ -25,8 +25,7 @@ import os
 import re
 from os.path import isfile, join
 from os import listdir
-import matplotlib.pyplot as plt
-from building_block_plotting import create_all_buildings as create_all_buildings2
+from scipy import stats
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 import random
@@ -443,6 +442,18 @@ def create_all_buildings(ubem, total_simulations, sim_num=0):
     return all_buildings
 
 
+def create_all_buildings2(ubem, training_hours, sim_num=65):
+    a_rand, buildings = ubem.create_a_rand(sim_ind=sim_num).values()
+    amx = ubem.create_amx(a_rand=a_rand, training_hours=training_hours)
+    prepared_buildings = ubem.create_prepared_buildings(amx=amx,
+                                                        a_rand=a_rand,
+                                                        buildings=buildings,
+                                                        training_hours=training_hours,
+                                                        sim_ind=sim_num)
+    print('Finished creating prepared_buildings...')
+    return prepared_buildings
+
+
 def get_simulation_errors():
     logs = [15, 65, 115, 165, 215, 265, 315, 365, 415, 465]
     log_files = [os.getcwd() + '/Simulation_output/UBEM_batch' + str(x) + '.log' for x in logs]
@@ -484,7 +495,7 @@ class run_pso:
 def run_pso_parallel(run_pso, sim_num=15):
     start = timeit.default_timer()
 
-    pool = mp.Pool(5)
+    pool = mp.Pool(10)
     sim_results = pool.map(run_pso.run, [i for i in np.arange(15, 15+sim_num)])
     pool.close()
     pool.join()
@@ -795,10 +806,26 @@ if __name__ == '__main__':
     Ec = np.reshape(ubem.city_electricity_scaled[training_hours], (ubem.modeling_hours,))
 
     # RUN PSO
-    run_pso_instance = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=20, iters=20, global_pso=True, training_hours=training_hours, rand_intializations=1)
+    run_pso_instance = run_pso(ubem=ubem, betas=betas, Ec=Ec, n_particles=50, iters=50, global_pso=True, training_hours=training_hours, rand_intializations=1)
     run_multiple_pso = run_pso_parallel(run_pso_instance, sim_num=500)
-    pickle.dump(run_multiple_pso, open(os.getcwd() + '/Data/of_of_sample_1000hrs_PSO_15_30.obj', 'wb'))
+    pickle.dump(run_multiple_pso, open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'wb'))
 
+    # LOAD ERROR RESULTS
+    error_vec = pickle.load(open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'rb'))
+    run_multiple_pso = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515.obj', 'rb'))
+    run_multiple_pso_2 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'rb'))
+    run_multiple_pso25 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_40.obj', 'rb'))
+
+    error_vec_pso = np.array([list(d.keys()) for d in run_multiple_pso])
+    error_vec_pso_2 = np.array([list(d.keys()) for d in run_multiple_pso_2])
+    error_vec_pso25 = np.array([list(d.keys()) for d in run_multiple_pso25])
+
+    error_vec_mat = np.concatenate([np.array(error_vec).reshape(500, 1), error_vec_pso], axis=1)
+    error_vec_mat25 = np.concatenate([np.array(error_vec[0:25]).reshape(25, 1), error_vec_pso[0:25], error_vec_pso25], axis=1)
+    error_vec_mat_2 = np.concatenate([np.array(error_vec).reshape(500, 1), error_vec_pso, error_vec_pso_2], axis=1)
+
+
+    stats.ttest_ind(error_vec, error_vec_pso)
     # Extract errors from log files
     all_errors = get_simulation_errors()
     all_errors = np.array(all_errors).flatten()
@@ -808,71 +835,24 @@ if __name__ == '__main__':
     costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
 
     # HOURLY LOAD ONE BUILDING
-    ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
-    doe_list = np.array(scale_all_doe_datasets(calculate=False))
-    chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
-    chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
+    # ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
+    # doe_list = np.array(scale_all_doe_datasets(calculate=False))
+    # chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
+    # chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
 
 
 
     # PLOT ERROR DISTRIBUTION
-    # ax = sns.distplot(all_errors, kde=False, hist=True, color='#274a5c', hist_kws={"alpha":1})
-    # ax.axvline(np.mean(all_errors), color='black', linestyle='-')
-    # plt.xlabel('Mean Absolute Percentage Error')
-    # plt.ylabel('Count')
-    # plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distribution.pdf')
-    # plt.show()
-
-    # PLOT BETA DISTRIBUTIONS & BUILDING HOURLY LOADS
-    # plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=7*24, end=7*24+168, duration=168)
-    # plot_2x2_hourly_load(ubem, chrystler_building_hourly, start=152*24 + 3*24, end=152*24 + 3*24+168, duration=168)
-    # [beta_distribution(betas, i) for i in range(25)]
-    # np.sum(betas[:,18])
-    from itertools import product
-    fig11 = plt.figure(figsize=(15, 15), constrained_layout=False)
-
-    # gridspec inside gridspec
-    outer_grid = fig11.add_gridspec(5, 5, wspace=0.0, hspace=0.0)
-
-    for p in range(25):
-        beta1 = betas[:, p]
-        beta2 = betas[:, p+25]
-        beta3 = betas[:, p+50]
-        bins = np.linspace(0, 1.1, 11)
-        weights = np.ones_like(beta1) / float(len(beta1))
-        # inner_grid = outer_grid[p].subgridspec(3, 3, wspace=0.0, hspace=0.0)
-        ax = fig11.add_subplot(outer_grid[p])
-        ax.hist([beta1, beta2, beta3], bins-0.05, weights=[weights, weights, weights])
-        if p >= 20 :
-            ax.xaxis.set_ticks_position('bottom')
-            #ax.set_xticks(bins)
-        else:
-            ax.set_xticks([])
-
-        if p % 5 == 0:
-            ax.yaxis.set_ticks_position('left')
-            # ax.set_yticks(bins)
-        else:
-            ax.set_yticks([])
-
-        fig11.add_subplot(ax)
+    fig, ax = plt.subplots()
+    c = ['#274a5c', 'firebrick']
+    for i, a in enumerate([error_vec, error_vec_pso_2]):
+        sns.distplot(a, ax=ax, kde=False, hist=True, color=c[i], hist_kws={"alpha": 0.5}, bins=np.arange(4.75, 10.25, .25))
+        ax.axvline(np.mean(a), color=c[i], linestyle='-')
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    plt.xlabel('Mean Absolute Percentage Error')
+    plt.ylabel('Count')
+    plt.savefig('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Error_Distributions_PSO.pdf')
     plt.show()
 
-    all_axes = fig11.get_axes()
 
-    # show only the outside spines
-    for ax in all_axes:
-        for sp in ax.spines.values():
-            sp.set_visible(False)
-        if ax.is_first_row():
-            ax.spines['top'].set_visible(True)
-        if ax.is_last_row():
-            ax.spines['bottom'].set_visible(True)
-            ax.xaxis.set_ticks_position('bottom')
-        if ax.is_first_col():
-            ax.spines['left'].set_visible(True)
-            ax.xaxis.set_ticks_position('bottom')
-        if ax.is_last_col():
-            ax.spines['right'].set_visible(True)
-
-    plt.show()
