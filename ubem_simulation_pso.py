@@ -799,6 +799,7 @@ if __name__ == '__main__':
     # simulations = monte_carlo_simulator_parallel(ubem=ubem, num_simulations=50, starting_num=starting_num)
     # pickle.dump(simulations, open(os.getcwd() + '/test005_1000_1000_50_' + str(starting_num) + '.obj', 'wb'))
 
+
     # Extract simulations
     list_of_simulations = [pickle.load(open(os.getcwd() + '/Data/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
                            for num in np.arange(10)]
