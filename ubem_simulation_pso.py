@@ -792,6 +792,7 @@ def check_error(pos, betas, Ec, all_buildings, one_mc_simulation=False, sim_num=
 
 
 if __name__ == '__main__':
+    # RUN ALL THE MONTE CARLO SIMULATIONS
     starting_hour = 1000
     total_hours = 1000
     ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=total_hours)  # 6148
@@ -799,12 +800,11 @@ if __name__ == '__main__':
     # simulations = monte_carlo_simulator_parallel(ubem=ubem, num_simulations=50, starting_num=starting_num)
     # pickle.dump(simulations, open(os.getcwd() + '/test005_1000_1000_50_' + str(starting_num) + '.obj', 'wb'))
 
-
-    # Extract simulations
+    # AFTER SIMULATIONS, EXTRACT DATA FROM PICKLED FILE
     list_of_simulations = [pickle.load(open(os.getcwd() + '/Data/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
                            for num in np.arange(10)]
 
-    # PSO
+    # PREPARE DATA FOR PSO
     betas = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     indices = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     training_hours = np.arange(starting_hour, starting_hour+total_hours)
@@ -815,22 +815,21 @@ if __name__ == '__main__':
     run_multiple_pso = run_pso_parallel(run_pso_instance, sim_num=500)
     pickle.dump(run_multiple_pso, open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'wb'))
 
-    # LOAD ERROR RESULTS
+    # LOAD ERROR RESULTS -- CHECK IMPROVEMENT OF PSO OVER MONTE CARLO
     error_vec = pickle.load(open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'rb'))
     run_multiple_pso = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515.obj', 'rb'))
-    run_multiple_pso_2 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'rb'))
-    run_multiple_pso25 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_40.obj', 'rb'))
+    # run_multiple_pso_2 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'rb'))
+    # run_multiple_pso25 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_40.obj', 'rb'))
 
     error_vec_pso = np.array([list(d.keys()) for d in run_multiple_pso])
-    error_vec_pso_2 = np.array([list(d.keys()) for d in run_multiple_pso_2])
-    error_vec_pso25 = np.array([list(d.keys()) for d in run_multiple_pso25])
+    # error_vec_pso_2 = np.array([list(d.keys()) for d in run_multiple_pso_2])
+    # error_vec_pso25 = np.array([list(d.keys()) for d in run_multiple_pso25])
 
     error_vec_mat = np.concatenate([np.array(error_vec).reshape(500, 1), error_vec_pso], axis=1)
-    error_vec_mat25 = np.concatenate([np.array(error_vec[0:25]).reshape(25, 1), error_vec_pso[0:25], error_vec_pso25], axis=1)
-    error_vec_mat_2 = np.concatenate([np.array(error_vec).reshape(500, 1), error_vec_pso, error_vec_pso_2], axis=1)
+    # error_vec_mat25 = np.concatenate([np.array(error_vec[0:25]).reshape(25, 1), error_vec_pso[0:25], error_vec_pso25], axis=1)
+    # error_vec_mat_2 = np.concatenate([np.array(error_vec).reshape(500, 1), error_vec_pso, error_vec_pso_2], axis=1)
 
-
-    stats.ttest_ind(error_vec, error_vec_pso)
+    # stats.ttest_ind(error_vec, error_vec_pso)
     # Extract errors from log files
     all_errors = get_simulation_errors()
     all_errors = np.array(all_errors).flatten()
@@ -839,7 +838,7 @@ if __name__ == '__main__':
     sim500_BC1000_HC1000 = pickle.load(open('/Users/jonathanroth/PycharmProjects/UBEM_NYC/Data/sim500_BC1000_HC1000.obj', 'rb'))
     costs = np.array([list(k.keys()) for k in sim500_BC1000_HC1000]).flatten()
 
-    # HOURLY LOAD ONE BUILDING
+    # PLOT HOURLY LOAD FOR ONE BUILDING
     # ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
     # doe_list = np.array(scale_all_doe_datasets(calculate=False))
     # chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
