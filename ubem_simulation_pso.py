@@ -841,7 +841,7 @@ if __name__ == '__main__':
     # PLOT HOURLY LOAD FOR ONE BUILDING
     # ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
     # doe_list = np.array(scale_all_doe_datasets(calculate=False))
-    # chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
+    chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
     # chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
 
     # PLOT ERROR DISTRIBUTION
