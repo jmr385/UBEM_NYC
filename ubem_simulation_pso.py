@@ -14,6 +14,7 @@ import timeit
 import gc
 import pickle
 import holidays
+import string
 from bdateutil import isbday
 import cvxpy as cvx
 from pyswarm import pso
@@ -662,19 +663,42 @@ def create_one_building_timeseries(ubem, betas, bbl, doe_list, beta_num=288, mod
 
 def beta_distribution(betas, pluto_class):
     import matplotlib.pyplot as plt
+
+
     # pluto_class = 0
     beta1 = betas[:, pluto_class]
     beta2 = betas[:, pluto_class+25]
     beta3 = betas[:, pluto_class+50]
     bins = np.linspace(0, 1.1, 11)
 
-    plt.hist([beta1, beta2, beta3], bins-0.05, label=['Beta 1', 'Beta 2','Beta 3'])
+    fig, ax = plt.subplots()
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+
+    if pluto_class in [0, 1, 2, 3, 10, 11, 12, 14, 17, 18, 22, 23]:
+        ax.set_facecolor('#AAB8B1')
+    elif pluto_class in [9, 19, 20, 21]:
+        ax.set_facecolor('#FDE6A9')
+    elif pluto_class in [4, 5, 6]:
+        ax.set_facecolor('#E3E9E8')
+    else:
+        ax.set_facecolor('#DBCDC0')
+
+    titles = list(string.ascii_uppercase)
+    titles.remove('X')
+
+    plt.hist([beta1, beta2, beta3], bins-0.05, label=['Beta 1', 'Beta 2', 'Beta 3'],color=['#388F7B', '#594E6A', '#F45539'])
     plt.locator_params(axis='x', nbins=20)
     plt.legend(loc='best')
+    legend = plt.legend(frameon=1)
+    frame = legend.get_frame()
+    frame.set_facecolor('white')  #FDE6A9
+    frame.set_edgecolor('white')
+
     plt.xlabel('Parameter Value')
     plt.ylabel('Count')
-    plt.title('PLUTO CLASS ' + str(pluto_class))
-    # plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + str(pluto_class) + '.pdf')
+    plt.title('PLUTO Class ' + titles[pluto_class])
+    plt.savefig(os.getcwd() + '/Figures/Betas_distribution_' + titles[pluto_class] + '.pdf')
     plt.show()
 
 
