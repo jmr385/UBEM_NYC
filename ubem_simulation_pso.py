@@ -28,7 +28,7 @@ from os.path import isfile, join
 from os import listdir
 from scipy import stats
 # import seaborn as sns
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import random
 from collections import Counter
 # os.environ["PATH"] += os.pathsep + '/usr/bin'
@@ -841,7 +841,7 @@ if __name__ == '__main__':
 
     # LOAD ERROR RESULTS -- CHECK IMPROVEMENT OF PSO OVER MONTE CARLO
     error_vec = pickle.load(open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'rb'))
-    run_multiple_pso = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515.obj', 'rb'))
+    run_multiple_pso = pickle.load(open(os.getcwd() + '/Data/out_of_sample_1000hrs_PSO_15_515.obj', 'rb'))
     # run_multiple_pso_2 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_515_2.obj', 'rb'))
     # run_multiple_pso25 = pickle.load(open(os.getcwd() + '/out_of_sample_1000hrs_PSO_15_40.obj', 'rb'))
 
@@ -864,9 +864,9 @@ if __name__ == '__main__':
 
     # PLOT HOURLY LOAD FOR ONE BUILDING
     # ubem = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
-    # doe_list = np.array(scale_all_doe_datasets(calculate=False))
+    doe_list = np.array(scale_all_doe_datasets(calculate=False))
     chrystler_building_hourly = create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=288, modeling_hours=8784, ll84=True)
-    # chrystler_building_hourly.to_csv(os.getcwd() + '/Data/Chrystler288.csv')
+    chrystler_building_hourly.to_csv(os.getcwd() + '/Data/ChrystlerNEW.csv')
 
     # PLOT ERROR DISTRIBUTION
     fig, ax = plt.subplots()

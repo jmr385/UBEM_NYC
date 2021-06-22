@@ -12,7 +12,7 @@ import timeit
 import re
 import matplotlib.pyplot as plt
 from ubem_simulation_pso import UBEM_Simulator, get_simulation_errors, scale_all_doe_datasets, plot_2x2_hourly_load, \
-    create_hourly_load, create_one_building_timeseries, plot_all_hourly_loads
+    create_hourly_load, create_one_building_timeseries #, plot_all_hourly_loads
 
 
 def create_all_buildings(ubem, training_hours, sim_num=65):
@@ -55,6 +55,48 @@ def out_of_sample_errors(ubem, betas, Ec, training_hours):
     return error_vec
 
 
+def plot_all_hourly_loads(all_buildings, betas, betas_to_plot=2, start=0, end=168, duration=168):
+
+    select_betas = np.array([0, 30, 54, 72, 76, 86, 97, 104, 105, 108, 113])
+    for i in np.arange(betas_to_plot):  #betas.shape[0]
+        # shift_vec = int(np.rint(np.random.normal(0, 1.5)))
+        shift_vec = 0
+        plt.plot(np.arange(duration), all_buildings[i]['Total Energy'].iloc[start+shift_vec:end+shift_vec], color='k', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Electricity'].iloc[start+shift_vec:end+shift_vec], color='orange', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Gas'].iloc[start+shift_vec:end+shift_vec], color='saddlebrown', alpha=0.1)
+
+    plt.ylabel('Energy [kBtu]')
+    plt.legend(('Total Energy', 'Electricity', 'Gas'), loc=2, frameon=False)
+    ax = plt.gca()
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.axes.get_xaxis().set_visible(False)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 4.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyEnergy_All_' + str(start) + '_.pdf')
+    plt.show()
+
+    for i in np.arange(betas_to_plot):  #betas.shape[0]
+        # shift_vec = int(np.rint(np.random.normal(0, 1.5)))
+        shift_vec = 0
+        plt.plot(np.arange(duration), all_buildings[i]['Cooling'].iloc[start+shift_vec:end+shift_vec], color='b', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['Heating'].iloc[start+shift_vec:end+shift_vec], color='r', alpha=0.1)
+        plt.plot(np.arange(duration), all_buildings[i]['GWater_Heating'].iloc[start+shift_vec:end+shift_vec], color='maroon', alpha=0.1)
+
+    plt.legend(('Cooling', 'Heating', 'Water Heating'), loc=2, frameon=False)
+    plt.ylabel('Energy [kBtu]')
+    plt.xlabel('Hours')
+    plt.xticks(np.arange(0, duration, step=24),
+               ('12am Sun', '12am Mon', '12am Tue', '12am Wed', '12am Thr', '12am Fri', '12am Sat'),
+               rotation=36)
+    fig = plt.gcf()
+    fig.set_size_inches(9, 5.5)
+    plt.savefig(os.getcwd() + '/Figures/Chrystler_HourlyCoolHeat_All_' + str(start) + '_.pdf')
+    plt.show()
+
+    return 0
+
+
 if __name__ == '__main__':
     starting_hour = 1000
     total_hours = 1000
@@ -79,13 +121,14 @@ if __name__ == '__main__':
     # RUN 500 TIMES: OUT-OF-SAMPLE ERROR FOR CONVX. SIMULATION
     # error_vec = out_of_sample_errors(ubem, betas, Ec, training_hours)
     # print(np.mean(error_vec))
-    pickle.dump(error_vec, open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'wb'))
+    # pickle.dump(error_vec, open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'wb'))
 
 
     # PLOT ONE BUILDING, ALL ENERGY CURVES
-    ubem2 = UBEM_Simulator(sample_buildings=1000, modeling_hours=8784)  # 6148
     doe_list = np.array(scale_all_doe_datasets(calculate=False))
-    all_buildings = [create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=i, modeling_hours=8784, ll84=True) for i in np.arange(betas.shape[0])]
-    plot_all_hourly_loads(all_buildings, start=100, end=100+168)
+    betas_to_plot = 2
+    # all_buildings = [create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=i, modeling_hours=8784, ll84=True) for i in np.arange(betas.shape[0])]
+    all_buildings = [create_one_building_timeseries(ubem, betas, '1012970023', doe_list, beta_num=i, modeling_hours=8784, ll84=True) for i in np.arange(betas_to_plot)]
+    plot_all_hourly_loads(all_buildings=all_buildings, betas=betas, betas_to_plot=betas_to_plot, start=100, end=100+168, duration=168)
 
 
