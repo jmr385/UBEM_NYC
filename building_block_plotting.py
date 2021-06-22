@@ -106,6 +106,7 @@ if __name__ == '__main__':
     list_of_simulations = [pickle.load(open(os.getcwd() + '/Data/test005_1000_1000_50_' + str(15 + num*50) + '.obj', 'rb'))
                            for num in np.arange(10)]
 
+    # EXTRACT PARAMETERS AND IMPORTANT DATA
     betas = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     indices = np.array([sim[1] for simulations in list_of_simulations for sim in simulations])
     training_hours = np.arange(starting_hour, starting_hour+total_hours)
@@ -123,6 +124,20 @@ if __name__ == '__main__':
     # print(np.mean(error_vec))
     # pickle.dump(error_vec, open(os.getcwd() + '/Data/of_of_sample_1000hrs.obj', 'wb'))
 
+    # CREATE HOURLY DATA FOR ONE BUILDING
+    one_building_name = 'CHANGE NAME HERE'
+    one_building_bbl_code = '1012970023'  # TODO: change this to bbl code you wish to reconstruct
+    doe_list = np.array(scale_all_doe_datasets(calculate=False))
+    one_building_hourly = create_one_building_timeseries(ubem=ubem,
+                                                         betas=betas,
+                                                         bbl=one_building_bbl_code,
+                                                         doe_list=doe_list,
+                                                         beta_num=288,  # TODO: take one of the 500 betas to construct one profile
+                                                         modeling_hours=8784,
+                                                         ll84=True)
+
+    # save to csv file
+    one_building_hourly.to_csv(os.getcwd() + '/Data/' + one_building_name + '.csv')
 
     # PLOT ONE BUILDING, ALL ENERGY CURVES
     doe_list = np.array(scale_all_doe_datasets(calculate=False))
